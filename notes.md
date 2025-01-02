@@ -4,7 +4,7 @@
 4. Finish tests.
 5. Link template TS configuration files to `build` and `test`.
 6. Shared build/test module 
-7. Gulp CWDs check
+7. Gulp CWDs check 
 
 1. Create project readme and license (and update package.json license!).
 2. New commit message scheme?
