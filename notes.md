@@ -2,7 +2,7 @@
 2. Bind exports (root-relative).
 3. Update build tool to remap export paths.
 4. Finish tests.
-5. Link template TS configuration files to `build` and `test`.
+5. Link template TS configuration files to `build` and `test`. 
 6. Shared build/test module 
 7. Gulp CWDs check 
 
