@@ -17,6 +17,7 @@
   jobs: {
     build-test: {
       name: "🔨 Build & Test",
+      if: "github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)",
       permissions: {contents: "read"},
       
       runs-on: "ubuntu-24.04",

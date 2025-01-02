@@ -12,7 +12,6 @@
 
 1. Git hooks?
 2. NPM dry run script
-3. Automated releases and tagging
 
 1. GitHub environment? (And update workflows)
 2. GitHub ruleset
@@ -25,9 +24,6 @@
 	
 	- Require status checks?
 3. GitHub packages and attestations?
-4. Test PR actions.
 
-1. Tests run any branch for pull requests (default events) and pushes
-2. Pushes to main run tests but also (auto-tag the commit)? and prepare a release.
-3. Publicizing a release releases the build via production environment.
-4. Make feature requests and issues issue templates.
+1. Publicizing a release releases the build via production environment.
+2. Make feature requests and issues issue templates.
