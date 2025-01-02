@@ -32,7 +32,7 @@
           
           uses: "thedoctor0/zip-release@0.7.6",
           with: {filename: "Build.zip"}
-        }
+        },
         {
           id: "prepare-release",
           name: "🔪 Prepare: Release",
