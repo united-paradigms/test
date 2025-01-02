@@ -10,8 +10,8 @@
       name: "🛠️ Build & Test",
       uses: "./.github/workflows/test.yml"
     },
-    publish: {
-      name: "📢 Publish",
+    prepare: {
+      name: "🍽️ Prepare",
       needs: "build-test",
       permissions: {contents: "write"},
       
@@ -33,9 +33,9 @@
           uses: "softprops/action-gh-release@v2.2.0",
           with: {
             draft: true,
-            tag_name: test,
+            tag_name: "test",
             
-            files: "./product/",
+            files: "product/",
             preserve_order: true,
             fail_on_unmatched_files: true
           }
