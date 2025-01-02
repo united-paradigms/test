@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+import process from "node:process"
+import {exec as callbackExec} from "node:child_process"
+import {promisify} from "node:util"
+
+const exec = promisify(callbackExec)
+
+const {stdout: output, stderr: error} = await exec("npm run-script test")
+
+console.warn("Don't do that!")
+process.exitCode = 0

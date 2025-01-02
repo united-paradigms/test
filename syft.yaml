@@ -1,0 +1,9 @@
+{
+  output: ["spdx-json=./artifacts/syft/sbom.spdx.json"],
+  scope: "all-layers",
+  format: {pretty: false},
+  javascript: {search-remote-licenses: true},
+  
+  parallelism: 4,
+  log: {level: "warn"}
+}

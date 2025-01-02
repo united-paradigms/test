@@ -1,0 +1,5 @@
+{
+	"extends": "./$shared/output-enabled.json",
+	
+	"compilerOptions": {"emitDeclarationOnly": true}
+}

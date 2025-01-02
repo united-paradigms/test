@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"../../../partials/compilation/output/everything.json",
+		"./$shared/implementations.json",
+		"../../../partials/compilation/output/declarations/disabled.json"
+	]
+}

@@ -1,0 +1,73 @@
+{
+	name: "🥼 Code Analysis",
+	on: {
+		workflow_call: {}
+	},
+	
+	jobs: {
+		code_analysis: {
+			strategy: {
+				matrix: {
+					include: [
+						{
+							name: "JavaScript",
+							language: "javascript-typescript",
+							
+							build-mode: "none"
+						},
+						{
+							name: "GitHub Actions",
+							language: "actions",
+							
+							build-mode: "none"
+						}
+					]
+				},
+				fail-fast: false
+			},
+			
+			name: "🥼 Code Analysis: ${{matrix.name}}",
+			permissions: {
+				contents: "read",
+				packages: "read",
+				security-events: "write"
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "setup-repository_checkout",
+					name: "🗄️ Setup: Repository Checkout",
+					
+					uses: "actions/checkout@v4.2.2"
+				},
+				{
+					id: "codeql-prepare",
+					name: "🥼 CodeQL: Prepare",
+					
+					uses: "github/codeql-action/init@v3.28.0",
+					with: {
+						languages: "${{matrix.language}}",
+						build-mode: "${{matrix.build-mode}}",
+						
+						dependency-caching: true,
+						debug-artifact-name: "debug",
+						debug-database-name: "debug-database"
+					}
+				},
+				{
+					id: "codeql-analyze",
+					name: "🥼 CodeQL: Analyze",
+					
+					uses: "github/codeql-action/analyze@v3.28.0",
+					with: {
+						output: "./artifacts/codeql/",
+						category: "${{matrix.name}}"
+					}
+				}
+			]
+		}
+	}
+}

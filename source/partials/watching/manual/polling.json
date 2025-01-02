@@ -1,0 +1,8 @@
+{
+	"extends": "./$shared/batching-enabled.json",
+	
+	"watchOptions": {
+		"watchFile": "dynamicprioritypolling",
+		"watchDirectory": "dynamicprioritypolling"
+	}
+}

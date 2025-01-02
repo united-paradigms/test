@@ -1,0 +1,8 @@
+{
+	"extends": [
+		"../../../../partials/compilation/target/webworker-modern.json",
+		"./$shared/build-system/disabled.json",
+		"../../../../partials/compilation/processing/file-determination/forced.json",
+		"../../../partials/compilation/processing/jsx/disabled.json"
+	]
+}

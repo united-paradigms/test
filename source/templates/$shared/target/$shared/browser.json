@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"../../../../partials/compilation/target/browser-modern.json",
+		"./build-system/disabled.json",
+		"../../../../partials/compilation/processing/file-determination/forced.json"
+	]
+}

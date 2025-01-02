@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"extendedDiagnostics": true,
+		"generateTrace": "${configDir}/artifacts/typescript/trace/",
+		"generateCpuProfile": "${configDir}/artifacts/typescript/profile.cpuprofile"
+	}
+}

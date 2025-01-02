@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"../../$shared/general.json",
+		"../../../$shared/type/script.json",
+		"../../../../partials/compilation/output/implementations/location/product.json"
+	]
+}

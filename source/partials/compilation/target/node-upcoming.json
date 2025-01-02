@@ -1,0 +1,10 @@
+{
+	"extends": [
+		"$shared/library/stable.json",
+		"$shared/module-resolution/node-experimental.json",
+		"$shared/package-resolution-used.json",
+		"$shared/unknown-extensions-allowed/disabled.json"
+	],
+	
+	"compilerOptions": {"module": "nodenext"}
+}

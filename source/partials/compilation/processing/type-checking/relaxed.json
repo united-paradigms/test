@@ -1,0 +1,16 @@
+{
+	"extends": "./$shared/type-checking-enabled.json",
+	
+	"compilerOptions": {
+		"strictNullChecks": false,
+		"exactOptionalPropertyTypes": false,
+		"noImplicitAny": false,
+		"useUnknownInCatchVariables": false,
+		"strictFunctionTypes": false,
+		"noImplicitReturns": false,
+		"noImplicitThis": false,
+		"noUncheckedIndexedAccess": false,
+		"strictBuiltinIteratorReturn": false,
+		"strictBindCallApply": false
+	}
+}

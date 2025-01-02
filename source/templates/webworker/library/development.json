@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"./$shared/general.json",
+		"../../$shared/library/source-maps/enabled.json"
+	]
+}

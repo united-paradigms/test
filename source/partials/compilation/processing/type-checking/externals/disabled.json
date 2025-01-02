@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"types": [],
+		"typeRoots": []
+	},
+	"typeAcquisition": {"enable": false}
+}

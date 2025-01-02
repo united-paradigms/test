@@ -1,0 +1,138 @@
+{
+	name: "🍳 Prepare",
+	on: {
+		workflow_call: {
+			inputs: {
+				product_artifact-identifier: {
+					description: "Identifier of the product artifact",
+					type: "string",
+					required: true
+				}
+			}
+		}
+	},
+	
+	jobs: {
+		prepare: {
+			env: {
+				product-archive-directory: "./artifacts/validate/prepare-archive/",
+				product-archive-filename: "Product.zip"
+			},
+			
+			name: "🍳 Prepare",
+			permissions: {
+				contents: "write",
+				actions: "read",
+				id-token: "write",
+				attestations: "write"
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "setup-repository_checkout",
+					name: "🗄️ Setup: Repository Checkout",
+					
+					uses: "actions/checkout@v4.2.2",
+					with: {
+						sparse-checkout: "./"
+					}
+				},
+				{
+					id: "artifacts-download",
+					name: "📥 Artifacts: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {
+						name: "${{inputs.product_artifact-identifier}}"
+					}
+				},
+				{
+					id: "prepare-archive-setup",
+					name: "📁 Prepare: Archive Setup",
+					
+					run: "mkdir -p ${{env.product-archive-directory}}"
+				},
+				{
+					id: "prepare-archive",
+					name: "🍱 Prepare: Archive",
+					
+					uses: "thedoctor0/zip-release@0.7.6",
+					with: {
+						filename: "${{env.product-archive-directory}}${{env.product-archive-filename}}"
+					}
+				},
+				{
+					id: "product-attestation",
+					name: "🔍 Product: Attestation",
+					
+					uses: "actions/attest-build-provenance@v2.1.0",
+					with: {
+						subject-name: "Product",
+						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						
+						show-summary: false
+					}
+				},
+				{
+					id: "product-sbom-setup",
+					name: "📁 Product SBOM: Setup",
+					
+					run: "mkdir -p ./artifacts/syft/"
+				},
+				{
+					id: "product-sbom-generation",
+					name: "✨ Product SBOM: Generation",
+					
+					uses: "anchore/sbom-action@v0.17.9",
+					with: {
+						output-file: "./artifacts/syft/sbom.spdx.json",
+						# config: "./syft.yaml",
+						# dependency-snapshot: true,
+						
+						upload-artifact: false,
+						upload-release-assets: false
+					}
+				},
+				{
+					id: "product-sbom-attestation",
+					name: "🔍 Product SBOM: Attestation",
+					
+					uses: "actions/attest-sbom@v2.1.0",
+					with: {
+						subject-name: "Product",
+						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						sbom-path: "./artifacts/syft/sbom.spdx.json",
+						
+						show-summary: false
+					}
+				},
+				{
+					id: "prepare-release",
+					name: "🔪 Prepare: Release",
+					
+					uses: "softprops/action-gh-release@v2.1.0",
+					with: {
+						# draft: true,
+						tag_name: "versions/3-new",
+						
+						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						preserve_order: true,
+						fail_on_unmatched_files: true
+					}
+				},
+				{
+					id: "annotate-release_url",
+					name: "🗒️ Annotate: Release URL",
+					
+					uses: "dkhunt27/action-annotations@v1",
+					with: {
+						msg: "Release URL: ${{steps.prepare-release.outputs.url}}"
+					}
+				}
+			]
+		}
+	}
+}

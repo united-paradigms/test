@@ -1,0 +1,8 @@
+{
+	"extends": [
+		"../../../../partials/compilation/output/implementations/location/base/source.json",
+		"../../../../partials/compilation/output/implementations/handling/compliant.json",
+		"../../../../partials/compilation/output/implementations/downleveling/stable.json",
+		"../../../../partials/compilation/output/implementations/downleveling/helpers/imported.json"
+	]
+}

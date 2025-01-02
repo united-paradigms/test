@@ -1,0 +1,6 @@
+{
+	"extends": "./$shared/files-excluded-none.json",
+	
+	"compilerOptions": {"assumeChangesOnlyAffectDirectDependencies": false},
+	"watchOptions": {"excludeDirectories": []}
+}

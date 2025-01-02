@@ -1,0 +1,8 @@
+{
+	"extends": [
+		"../../../partials/compilation/output/declarations.json",
+		"../../../partials/compilation/output/declarations/enabled.json",
+		"../../../partials/compilation/output/declarations/interfaces/non-internal.json",
+		"../../../partials/compilation/output/comment-removal/disabled.json"
+	]
+}

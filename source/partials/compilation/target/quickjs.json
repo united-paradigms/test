@@ -1,0 +1,9 @@
+{
+	"extends": [
+		"$shared/library-used.json",
+		"$shared/module-resolution/build-tool.json",
+		"$shared/package-resolution-used.json",
+		"$shared/unknown-extensions-allowed/disabled.json",
+		"$shared/module-output/standard-stable.json"
+	]
+}

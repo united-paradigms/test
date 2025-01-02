@@ -1,0 +1,9 @@
+{
+	"extends": "./$shared/resolution-custom-none.json",
+	
+	"compilerOptions": {
+		"isolatedModules": false,
+		"isolatedDeclarations": false,
+		"preserveConstEnums": false
+	}
+}

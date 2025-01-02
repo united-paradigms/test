@@ -1,0 +1,5 @@
+{
+	"extends": "./$shared/output-file-none.json",
+	
+	"compilerOptions": {"outDir": "${configDir}/product/"}
+}

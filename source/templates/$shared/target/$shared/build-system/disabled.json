@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"../../../../../partials/compilation/target/build-systems/disabled.json",
+		"../../../../../partials/output/style/styled.json"
+	]
+}

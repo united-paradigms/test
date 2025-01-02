@@ -1,0 +1,8 @@
+{
+	"compilerOptions": {
+		"moduleSuffixes": [""],
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true,
+		"customConditions": []
+	}
+}

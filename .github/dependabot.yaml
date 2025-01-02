@@ -1,0 +1,66 @@
+{
+	version: 2,
+	updates: [
+		{
+			package-ecosystem: "npm",
+			groups: {
+				"production new releases": {
+					dependency-type: "production",
+					applies-to: "version-updates"
+				},
+				"production security updates": {
+					dependency-type: "production",
+					applies-to: "security-updates"
+				},
+				"development new releases": {
+					dependency-type: "development",
+					applies-to: "version-updates"
+				},
+				"development security updates": {
+					dependency-type: "development",
+					applies-to: "security-updates"
+				}
+			},
+			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
+			versioning-strategy: "increase-if-necessary",
+			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["@united-paradigms/devops"],
+			assignees: ["@united-paradigms/devops"],
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
+		},
+		{
+			package-ecosystem: "github-actions",
+			groups: {
+				"new releases": {
+					applies-to: "version-updates",
+					patterns: ["*"]
+				},
+				"security updates": {
+					applies-to: "security-updates",
+					patterns: ["*"]
+				}
+			},
+			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
+			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["ciosciaa"],
+			assignees: ["ciosciaa"],
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
+		}
+	]
+}

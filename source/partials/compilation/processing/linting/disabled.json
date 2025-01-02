@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"allowUnreachableCode": true,
+		"noUnusedLocals": false,
+		"allowUnusedLabels": true,
+		"noFallthroughCasesInSwitch": false,
+		"noUnusedParameters": false,
+		"strictPropertyInitialization": false,
+		"noImplicitOverride": false,
+		"noPropertyAccessFromIndexSignature": false
+	}
+}

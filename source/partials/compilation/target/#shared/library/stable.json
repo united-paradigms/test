@@ -1,0 +1,5 @@
+{
+	"extends": "../library-used.json",
+	
+	"compilerOptions": {"lib": ["es2024"]}
+}

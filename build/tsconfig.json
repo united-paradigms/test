@@ -1,0 +1,14 @@
+{
+	"include": ["**/*.ts"],
+	"exclude": [],
+	"files": null,
+	"compilerOptions": {
+		"module": "node16",
+		"moduleResolution": "node16",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		
+		"allowImportingTsExtensions": true,
+		"rewriteRelativeImportExtensions": true
+	}
+}

@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"../../../../partials/compilation/output/implementations/location/artifacts-product.json",
+		"../../../../partials/compilation/output/declarations/location/artifacts-product.json"
+	]
+}

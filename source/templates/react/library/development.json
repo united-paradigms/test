@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"./$shared/general.json",
+		"../../../partials/compilation/processing/jsx/react-development.json",
+		"../../$shared/library/source-maps/enabled.json"
+	]
+}

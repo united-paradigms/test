@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"noErrorTruncation": true,
+		"preserveWatchOutput": true
+	}
+}

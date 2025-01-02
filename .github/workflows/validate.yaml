@@ -1,0 +1,57 @@
+{
+	name: "✅ Validate Commit",
+	on: {
+		push: {},
+		pull_request: {types: ["opened", "synchronize", "reopened"]}
+	},
+	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
+	
+	jobs: {
+		build: {
+			name: "🛠️ Build",
+			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
+			permissions: {
+				contents: "read"
+			},
+			
+			uses: "./.github/workflows/build.yaml"
+		},
+		code_analysis: {
+			name: "🥼 Code Analysis",
+			permissions: {
+				contents: "read",
+				packages: "read",
+				security-events: "write"
+			},
+			
+			uses: "./.github/workflows/code-analysis.yaml"
+		},
+		test: {
+			name: "🔬 Test",
+			needs: "build",
+			permissions: {},
+			
+			uses: "./.github/workflows/test.yaml",
+			with: {
+				built_project_artifact-filename: "${{needs.build.outputs.built_project_artifact-filename}}",
+				built_project_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}"
+			}
+		},
+		prepare: {
+			name: "🔬 Prepare",
+			needs: ["build", "test", "code_analysis"],
+			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
+			permissions: {
+				contents: "write",
+				actions: "read",
+				id-token: "write",
+				attestations: "write"
+			},
+			
+			uses: "./.github/workflows/prepare.yaml",
+			with: {
+				product_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}"
+			}
+		}
+	}
+}

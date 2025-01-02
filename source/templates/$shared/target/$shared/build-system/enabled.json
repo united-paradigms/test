@@ -1,0 +1,8 @@
+{
+	"extends": [
+		"../../../../../partials/compilation/target/build-system-modern.json",
+		"../../../../../partials/compilation/target/build-systems/enabled.json",
+		"../../../../../partials/compilation/processing/file-determination/forced.json",
+		"../../../../../partials/output/style/plain.json"
+	]
+}

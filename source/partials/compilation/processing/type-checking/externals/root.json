@@ -1,0 +1,8 @@
+{
+	"extends": [
+		"./$shared/type-acquisition-enabled.json",
+		"./$shared/types-individual-none.json"
+	],
+	
+	"compilerOptions": {"typeRoots": ["${configDir}/node_modules/@types/"]}
+}

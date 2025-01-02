@@ -1,0 +1,9 @@
+{
+	"typeAcquisition": {
+		"enable": true,
+		"disableFilenameBasedTypeAcquisition": true,
+		
+		"include": [],
+		"exclude": []
+	}
+}

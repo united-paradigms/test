@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"disableSizeLimit": true,
+		"disableReferencedProjectLoad": false,
+		"disableSolutionSearching": false
+	}
+}

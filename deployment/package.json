@@ -1,0 +1,23 @@
+{
+	"name": "@united-paradigms/typescript-configurations.deployment",
+	"description": "Deployment utilities for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"devDependencies": {
+		"mdast": "^3.0.0",
+		"mdast-util-from-markdown": "^2.0.2",
+		"mdast-util-to-markdown": "^2.1.2",
+		"mdast-util-gfm": "^3.0.0",
+		"micromark-extension-gfm": "^3.0.0",
+		"read-pkg": "^9.0.1",
+		"semver": "^7.6.3",
+		"@types/semver": "^7.5.8",
+		
+		"gulp": "^5.0.0",
+		"@types/gulp": "^4.0.17",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.7.2"
+	}
+}

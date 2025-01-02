@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"../../../../partials/compilation/output/implementations/source-maps/external.json",
+		"../../../../partials/compilation/output/declarations/source-maps/enabled.json"
+	]
+}

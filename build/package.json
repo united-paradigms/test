@@ -1,0 +1,26 @@
+{
+	"name": "@united-paradigms/typescript-configurations.build",
+	"description": "Build pipeline for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"devDependencies": {
+		"gulp": "^5.0.0",
+		"del": "^8.0.0",
+		"gulp-json-editor": "^2.6.0",
+		"gulp-jsonminify": "^1.1.0",
+		"gulp-tar": "^4.0.0",
+		"@types/gulp-tar": "^4.0.0",
+		"gulp-gzip": "^1.4.2",
+		"@types/gulp-gzip": "^0.0.36",
+		"gulplog": "^2.2.0",
+		"chalk": "^5.4.1",
+		
+		"typescript": "^5.7.2",
+		"ts-node": "^10.9.2",
+		"@types/gulp": "^4.0.17",
+		"@types/gulp-json-editor": "^2.2.36",
+		"@types/gulp-jsonminify": "^1.0.3"
+	}
+}

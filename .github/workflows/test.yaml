@@ -1,0 +1,58 @@
+{
+	name: "🔬 Test",
+	on: {
+		workflow_call: {
+			inputs: {
+				built_project_artifact-filename: {
+					description: "File name of the built project archive",
+					type: "string",
+					required: true
+				},
+				built_project_artifact-identifier: {
+					description: "Identifier of the built project artifact to test",
+					type: "string",
+					required: true
+				}
+			}
+		}
+	},
+	
+	jobs: {
+		test: {
+			name: "🧪 Test",
+			permissions: {},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "built_project-artifact_download",
+					name: "📥 Built Project: Artifact Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {
+						name: "${{inputs.built_project_artifact-identifier}}"
+					}
+				},
+				{
+					id: "built_project-decompression",
+					name: "📄 Built Project: Decompression",
+					
+					uses: "nxtlvlsoftware/tar-ops-action@v1.0.1",
+					with: {
+						operation: "extract",
+						files: "./${{inputs.built_project_artifact-filename}}",
+						outPath: "./"
+					}
+				},
+				{
+					id: "built_project_artifact-test",
+					name: "🧪 Built Project Artifact: Test",
+					
+					run: "npm run-script test"
+				}
+			]
+		}
+	}
+}

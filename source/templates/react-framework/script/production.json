@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"./$shared/general.json",
+		"../../../partials/compilation/processing/jsx/react-production.json",
+		"../../../partials/compilation/output/implementations/source-maps/disabled.json"
+	]
+}

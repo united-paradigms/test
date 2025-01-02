@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"./$shared/browser.json",
+		"../../../partials/compilation/processing/jsx/runtime/react.json"
+	]
+}

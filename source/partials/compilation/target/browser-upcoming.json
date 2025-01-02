@@ -1,0 +1,11 @@
+{
+	"extends": [
+		"$shared/library-used.json",
+		"$shared/module-resolution/node-experimental.json",
+		"$shared/package-resolution-used.json",
+		"$shared/unknown-extensions-allowed/disabled.json",
+		"$shared/module-output/standard-experimental.json"
+	],
+	
+	"compilerOptions": {"lib": ["esnext", "dom"]}
+}

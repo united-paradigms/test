@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"./$shared/build-system/enabled.json",
+		"../../../partials/compilation/processing/jsx/react-native.json",
+		"../../../partials/compilation/processing/jsx/runtime/react.json"
+	]
+}
