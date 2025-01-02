@@ -17,6 +17,8 @@
   jobs: {
     build-test: {
       name: "🛠️ Build & Test",
+      permissions: {contents: "read"},
+      
       runs-on: "ubuntu-24.04",
       timeout-minutes: 5,
       
@@ -24,7 +26,6 @@
         {
           id: "setup-repository_checkout",
           name: "🗄️ Setup: Repository Checkout",
-          permissions: {contents: "read"},
           
           uses: "actions/checkout@v4.2.2",
           with: {
