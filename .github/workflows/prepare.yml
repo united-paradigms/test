@@ -31,7 +31,7 @@
           name: "🍱 Prepare: Archive",
           
           uses: "thedoctor0/zip-release@0.7.6",
-          with: {filename: "Build.zip"}
+          with: {filename: "Product.zip"}
         },
         {
           id: "prepare-release",
@@ -42,7 +42,7 @@
             draft: true,
             tag_name: "idk",
             
-            files: "Build.zip",
+            files: "Product.zip",
             preserve_order: true,
             fail_on_unmatched_files: true
           }
