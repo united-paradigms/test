@@ -27,5 +27,7 @@
 3. GitHub packages and attestations?
 4. Test PR actions.
 
-1. Tests run on pull request default events and push — any branch
-2. Feature requests and issues issue templates.
+1. Tests run any branch for pull requests (default events) and pushes
+2. Pushes to main run tests but also (auto-tag the commit)? and prepare a release.
+3. Publicizing a release releases the build via production environment.
+4. Make feature requests and issues issue templates.
