@@ -11,7 +11,7 @@
       uses: "./.github/workflows/test.yml"
     },
     prepare: {
-      name: "🍽️ Prepare",
+      name: "🍳 Prepare",
       needs: "build-test",
       permissions: {contents: "write"},
       
@@ -28,14 +28,14 @@
         },
         {
           id: "prepare-release",
-          name: "🍽️ Prepare: Release",
+          name: "🔪 Prepare: Release",
           
           uses: "softprops/action-gh-release@v2.2.0",
           with: {
             draft: true,
             tag_name: "test",
             
-            files: "product/",
+            files: "**",
             preserve_order: true,
             fail_on_unmatched_files: true
           }

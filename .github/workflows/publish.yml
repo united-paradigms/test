@@ -12,7 +12,7 @@
       uses: "./.github/workflows/test.yml"
     },
     publish: {
-      name: "📢 Publish",
+      name: "📣 Publish",
       needs: "build-test",
       permissions: {
         contents: "read",
@@ -33,7 +33,7 @@
         },
         {
           id: "publish-npm",
-          name: "📢 Publish: NPM",
+          name: "🎁 Publish: NPM",
           
           uses: "JS-DevTools/npm-publish@v3.1.1",
           with: {token: "${{secrets.NPM_ACCESSTOKEN}}"}

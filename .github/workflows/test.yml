@@ -16,7 +16,7 @@
   
   jobs: {
     build-test: {
-      name: "🛠️ Build & Test",
+      name: "🔨 Build & Test",
       permissions: {contents: "read"},
       
       runs-on: "ubuntu-24.04",
