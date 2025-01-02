@@ -3,7 +3,7 @@
 3. Update build tool to remap export paths.
 4. Finish tests.
 5. Link template TS configuration files to `build` and `test`.
-6. Shared build/test module
+6. Shared build/test module 
 7. Gulp CWDs check
 
 1. Create project readme and license (and update package.json license!).
