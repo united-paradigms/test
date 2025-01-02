@@ -27,15 +27,22 @@
           with: {name: "${{needs.build-test.outputs.build-artifact-identifier}}"}
         },
         {
+          id: "prepare-archive",
+          name: "🍱 Prepare: Archive",
+          
+          uses: "thedoctor0/zip-release@0.7.6",
+          with: {filename: "Build.zip"}
+        }
+        {
           id: "prepare-release",
           name: "🔪 Prepare: Release",
           
           uses: "softprops/action-gh-release@v2.2.0",
           with: {
             draft: true,
-            tag_name: "test",
+            tag_name: "idk",
             
-            files: "**",
+            files: "Build.zip",
             preserve_order: true,
             fail_on_unmatched_files: true
           }
