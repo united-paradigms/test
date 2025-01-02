@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"incremental": true,
+		"tsBuildInfoFile": "${configDir}/artifacts/typescript/build-info.tsbuildinfo"
+	}
+}

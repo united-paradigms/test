@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"explainFiles": true,
+		"listEmittedFiles": true,
+		"traceResolution": true
+	}
+}

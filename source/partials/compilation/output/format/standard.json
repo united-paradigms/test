@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"newLine": "lf",
+		"emitBOM": false
+	}
+}

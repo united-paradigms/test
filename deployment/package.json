@@ -1,0 +1,15 @@
+{
+	"name": "@united-paradigms/typescript-configurations.deployment",
+	"description": "Deployment utilities for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"devDependencies": {
+		"gulp": "^5.0.0",
+		"typescript": "^5.7.2",
+		
+		"ts-node": "^10.9.2",
+		"@types/gulp": "^4.0.17"
+	}
+}

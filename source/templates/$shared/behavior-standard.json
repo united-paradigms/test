@@ -1,0 +1,26 @@
+{
+	"extends": [
+		"../../partials/compilation/behavior/composite/enabled.json",
+		"../../partials/compilation/behavior/strict/enabled.json",
+		"../../partials/compilation/behavior/incremental/enabled.json",
+		"../../partials/compilation/conditions/error-free.json",
+		"../../partials/compilation/input/source.json",
+		"../../partials/compilation/processing/javascript-inclusion/disabled.json",
+		"../../partials/compilation/processing/handling/compliant.json",
+		"../../partials/compilation/processing/type-checking/strict.json",
+		"../../partials/compilation/processing/type-checking/quality/exact.json",
+		"../../partials/compilation/processing/type-checking/externals/ancestors.json",
+		"../../partials/compilation/processing/module-resolution/handling/compliant.json",
+		"../../partials/compilation/processing/module-resolution/extensions/typescript.json",
+		"../../partials/compilation/processing/module-resolution/symlink-base/target.json",
+		"../../partials/compilation/output/format/standard.json",
+		"../../partials/output/verbosity/minimal.json",
+		"../../partials/watching/manual/file-system.json",
+		"../../partials/watching/manual/quality/exact.json",
+		"../../partials/watching/editor/enabled.json",
+		"../../partials/resources/unlimited.json",
+		"../../partials/diagnostics/files/disabled.json",
+		"../../partials/diagnostics/system/disabled.json",
+		"../../partials/plugins/none.json"
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"extends": [
+		"../../$shared/behavior-standard.json",
+		"../../$shared/target/quickjs.json"
+	]
+}

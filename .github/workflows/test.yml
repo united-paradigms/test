@@ -1,0 +1,88 @@
+{
+  name: "🛠️ Build & Test Project",
+  run-name: "${{github.event.release.name}}",
+  on: {
+    push: {branches: "main"},
+    pull_request: {branches: "main"},
+    workflow_call: {
+      outputs: {
+        build-artifact-identifier: {
+          description: "Build artifact identifier",
+          value: "${{jobs.build-test.outputs.build-artifact-identifier}}"
+        }
+      }
+    }
+  },
+  concurrency: {
+    group: "test",
+    cancel-in-progress: true
+  },
+  
+  jobs: {
+    build-test: {
+      name: "🛠️ Build & Test",
+      permissions: {contents: "read"},
+      runs-on: "ubuntu-24.04",
+      # environment: "Development",
+      timeout-minutes: 5,
+      
+      steps: [
+        {
+          id: "setup-repository_checkout",
+          name: "🗄️ Setup: Repository Checkout",
+          
+          uses: "actions/checkout@v4.2.2",
+          with: {
+            sparse-checkout: "
+              source\n
+              build\n
+              tests\n
+              scripts\n
+              docs
+            "
+          }
+        },
+        {
+          id: "setup-node_installation",
+          name: "🔗 Setup: Node Installation",
+          
+          uses: "actions/setup-node@v4.1.0",
+          with: {
+            node-version: "^23",
+            check-latest: true,
+            
+            registry-url: "https://registry.npmjs.org/",
+            scope: "@united-paradigms",
+            always-auth: false
+          }
+        },
+        {
+          id: "setup-dependency_installation",
+          name: "📦 Setup: Dependency Installation",
+          
+          run: "npm clean-install"
+        },
+        {
+          id: "build",
+          name: "🔨 Build",
+          
+          run: "npm run-script build"
+        },
+        {
+          id: "artifacts-upload",
+          name: "📤 Artifacts: Upload",
+          
+          uses: "actions/upload-artifact@v4.5.0",
+          with: {name: "🔨 Build", path: "./product/"}
+        },
+        {
+          id: "test",
+          name: "🧪 Test",
+          
+          run: "npm run-script test"
+        }
+      ],
+      outputs: {build-artifact-identifier: "🔨 Build"}
+    }
+  }
+}

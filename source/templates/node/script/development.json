@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"./$shared/general.json",
+		"../../../partials/compilation/output/implementations/source-maps/external.json",
+		"../../../partials/compilation/output/comment-removal/disabled.json"
+	]
+}

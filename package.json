@@ -1,0 +1,47 @@
+{
+	"name": "@united-paradigms/jkfgorwjfoiewjfewoi",
+	"description": "Structured library of TypeScript configuration templates and partials",
+	"keywords": ["TypeScript", "configuration", "tsconfig", "config", "templates", "partials"],
+	"version": "0.0.8",
+	
+	"homepage": "https://github.com/united-paradigms/test/",
+	"repository": {
+		"type": "github",
+		"url": "git+https://github.com/united-paradigms/test.git"
+	},
+	"bugs": {
+		"url": "https://github.com/united-paradigms/test/issues/",
+		"email": "bugs@unitedparadigms.com"
+	},
+	"author": {
+		"name": "Christopher Cook",
+		"url": "https://www.ciosciaa.net/",
+		"email": "christophercook@unitedparadigms.net"
+	},
+	"funding": [
+		{"type": "Patreon", "url": "https://www.patreon.com/united_paradigms/"},
+		{"type": "GitHub Sponsors", "url": "https://github.com/sponsors/united-paradigms/"}
+	],
+	"license": "AGPL-3.0-only",
+	
+	"workspaces": ["./build/", "./tests/", "./deployment/"],
+	"scripts": {
+		"build": "./scripts/build/build.sh",
+		"clean": "./scripts/build/clean.sh",
+		"clean-build": "./scripts/build/clean-build.sh",
+		"watch": "./scripts/build/watch.sh",
+		"clean-watch": "./scripts/build/clean-watch.sh",
+		
+		"git-hooks-register": "./scripts/utilities/git-hooks-register.sh",
+		
+		"preinstall": "npm run-script git-hooks-register",
+		
+		"pretest": "npm run-script clean-build",
+		"test": "./scripts/tests/test.sh"
+	},
+	"exports": {
+		".": "./main.d.ts",
+		"./array.include": "./array.include.d.ts",
+		"./intl": "./intl.d.ts"
+	}
+}

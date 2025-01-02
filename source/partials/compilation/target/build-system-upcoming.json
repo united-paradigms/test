@@ -1,0 +1,9 @@
+{
+	"extends": [
+		"$shared/library/experimental.json",
+		"$shared/module-resolution/build-tool.json",
+		"$shared/package-resolution-used.json",
+		"$shared/unknown-extensions-allowed/enabled.json",
+		"$shared/module-output/preserved.json"
+	]
+}

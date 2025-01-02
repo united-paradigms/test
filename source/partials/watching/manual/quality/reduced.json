@@ -1,0 +1,6 @@
+{
+	"extends": "./$shared/files-excluded-none.json",
+	
+	"compilerOptions": {"assumeChangesOnlyAffectDirectDependencies": true},
+	"watchOptions": {"excludeDirectories": ["${configDir}/**/node_modules/"]}
+}

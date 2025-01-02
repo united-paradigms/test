@@ -1,0 +1,5 @@
+{
+	"extends": "./$shared/root-directories-none.json",
+	
+	"compilerOptions": {"rootDir": "${configDir}/source/"}
+}

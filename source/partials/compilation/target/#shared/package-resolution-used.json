@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+		"resolvePackageJsonImports": true,
+		"resolvePackageJsonExports": true
+	}
+}

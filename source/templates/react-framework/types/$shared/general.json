@@ -1,0 +1,7 @@
+{
+	"extends": [
+		"../../$shared/general.json",
+		"../../../$shared/type/types.json",
+		"../../../../partials/compilation/output/declarations/location/artifacts-product.json"
+	]
+}

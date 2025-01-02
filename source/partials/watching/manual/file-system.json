@@ -1,0 +1,9 @@
+{
+	"extends": "./$shared/batching-enabled.json",
+	
+	"watchOptions": {
+		"watchFile": "usefsevents",
+		"watchDirectory": "usefsevents",
+		"fallbackPolling": "dynamicpriority"
+	}
+}

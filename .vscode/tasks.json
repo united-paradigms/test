@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{"type": "npm", "script": "build", "hide": true},
+		{"type": "npm", "script": "clean", "hide": true},
+		{"type": "npm", "script": "clean-build", "hide": true},
+		{"type": "npm", "script": "watch", "hide": true},
+		{"type": "npm", "script": "clean-watch", "hide": true},
+		{"type": "npm", "script": "test", "hide": true},
+		{"type": "npm", "script": "git-hooks-register", "hide": true}
+	]
+}

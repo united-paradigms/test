@@ -1,0 +1,10 @@
+[attr]plaintext text=auto diff conflict-marker-size=16
+[attr]plaintext-tabs plaintext whitespace=indent-with-non-tab,-blank-at-eol,tabwidth=2
+[attr]plaintext-spaces plaintext whitespace=tab-in-indent,-blank-at-eol,tabwidth=2
+
+* plaintext-tabs
+
+*.yml plaintext-spaces !plaintext-tabs
+*.yaml plaintext-spaces !plaintext-tabs
+
+*.png binary !plaintext-tabs

@@ -1,0 +1,7 @@
+{
+	"compilerOptions": {
+		"skipLibCheck": false,
+		"disableSourceOfProjectReferenceRedirect": false,
+		"noUncheckedSideEffectImports": true
+	}
+}

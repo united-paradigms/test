@@ -1,0 +1,175 @@
+{
+	"folders": [
+		{"path": "./source/", "name": "Source"},
+		{"path": "./build/", "name": "Build"},
+		{"path": "./tests/", "name": "Tests"},
+		{"path": "./product/", "name": "Product"},
+		{"path": "./artifacts/", "name": "Artifacts"},
+		{"path": "./scripts/", "name": "Scripts"},
+		{"path": "./deployment/", "name": "Deployment"},
+		{"path": "./docs/", "name": "Documentation"},
+		{"path": "./", "name": "Project"}
+	],
+	"settings": {
+		"files.encoding": "utf8",
+		"editor.insertSpaces": false,
+		"files.eol": "\n",
+		"files.trimTrailingWhitespace": false,
+		"files.insertFinalNewline": false,
+		
+		"json.validate.enable": true,
+		"json.schemaDownload.enable": true,
+		"json.schemas": [
+			{
+				"fileMatch": ["source/**/*.json"],
+				"url": "https://json.schemastore.org/tsconfig"
+			}
+		],
+
+		"npm.scriptExplorerExclude": [
+			"preinstall",
+			"pretest"
+		]
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Clean",
+				"detail": "Removes everything inside the product directory",
+				"group": "build",
+				"icon": {"id": "trash"},
+				
+				"type": "shell",
+				"command": "./scripts/build/clean.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Build",
+				"detail": "Builds the source code",
+				"group": {"kind": "build", "isDefault": true},
+				"icon": {"id": "tools"},
+				
+				"type": "shell",
+				"command": "./scripts/build/build.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Clean Build",
+				"detail": "Builds the source code in a cleaned product directory",
+				"group": "build",
+				"icon": {"id": "refresh"},
+				
+				"type": "shell",
+				"command": "./scripts/build/clean-build.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Watch",
+				"detail": "Builds changes to source files as they happen",
+				"group": "build",
+				"icon": {"id": "eye"},
+				
+				"type": "shell",
+				"command": "./scripts/build/watch.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Clean Watch",
+				"detail": "Builds changes to source files as they happen after performing a clean build",
+				"group": "build",
+				"icon": {"id": "eye"},
+				
+				"type": "shell",
+				"command": "./scripts/build/clean-watch.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"runOptions": {"runOn": "folderOpen"},
+				"problemMatcher": []
+			},
+			{
+				"label": "Test",
+				"detail": "Tests the build product",
+				"group": {"kind": "test", "isDefault": true},
+				"icon": {"id": "pass"},
+				
+				"type": "shell",
+				"command": "./scripts/tests/test.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"dependsOn": "Clean Build",
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Register Git Hooks",
+				"detail": "Registers git hooks to the client configuration",
+				"group": "none",
+				"icon": {"id": "references"},
+				"type": "shell",
+				"command": "./scripts/utilities/git-hooks-register.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"reveal": "silent",
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"runOptions": {"runOn": "folderOpen"},
+				"problemMatcher": []
+			}
+		]
+	}
+}

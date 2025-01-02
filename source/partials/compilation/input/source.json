@@ -1,0 +1,9 @@
+{
+	"extends": [
+		"./$shared/files-undeclared.json",
+		"./$shared/exclusions-none.json",
+		"./$shared/imports-inclusion.json"
+	],
+	
+	"include": "${configDir}/source/"
+}

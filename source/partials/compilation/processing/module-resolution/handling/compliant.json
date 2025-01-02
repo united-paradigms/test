@@ -1,0 +1,10 @@
+{
+	"compilerOptions": {
+		"forceConsistentCasingInFileNames": true,
+		"verbatimModuleSyntax": true,
+		"baseUrl": null,
+		"allowSyntheticDefaultImports": false,
+		"resolveJsonModule": false,
+		"allowUmdGlobalAccess": false
+	}
+}

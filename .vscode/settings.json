@@ -1,0 +1,12 @@
+{
+	"files.exclude": {
+		"source/": true,
+		"build/": true,
+		"tests/": true,
+		"product/": true,
+		"artifacts/": true,
+		"deployment/": true,
+		"scripts/": true,
+		"docs/": true
+	}
+}
