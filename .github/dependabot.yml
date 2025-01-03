@@ -39,7 +39,7 @@
 		{
 			package-ecosystem: "gitsubmodule",
 			groups: {
-				git_submodules-new_releases: {applies-to: "version-updates"},
+				"git_submodules-new_releases": {applies-to: "version-updates"},
 				b: {applies-to: "security-updates"}
 			},
 			
