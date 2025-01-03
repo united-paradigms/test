@@ -45,7 +45,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						draft: true,
-						tag_name: "A3",
+						tag_name: "versions/a",
 						
 						files: "Product.zip",
 						preserve_order: true,
