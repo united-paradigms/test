@@ -82,7 +82,7 @@
 			outputs: {build-artifact-identifier: "🔨 Build"}
 		},
 		prepare: {
-			name: "🔨 Build & Test",
+			name: "🍳 Prepare",
 			needs: "build-test",
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {contents: "write"},
@@ -112,7 +112,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						draft: true,
-						tag_name: "idk",
+						tag_name: "a2",
 						
 						files: "Product.zip",
 						preserve_order: true,
