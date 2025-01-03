@@ -1,3 +1,15 @@
 {
-  q: 2
+	version: 2,
+	updates: [
+		{
+			package-ecosystem: "npm",
+			directory: "/",
+			schedule: {interval: "daily"},
+			
+			versioning-strategy: "increase-if-necessary",
+			
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
+		}
+	]
 }
