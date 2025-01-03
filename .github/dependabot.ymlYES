@@ -4,19 +4,19 @@
 		{
 			package-ecosystem: "npm",
 			groups: {
-				"production new release": {
+				"production new releases": {
 					dependency-type: "production",
 					applies-to: "version-updates"
 				},
-				npm-production-security_updates: {
+				"production security updates": {
 					dependency-type: "production",
 					applies-to: "security-updates"
 				},
-				npm-development-new_releases: {
+				"development new releases": {
 					dependency-type: "development",
 					applies-to: "version-updates"
 				},
-				npm-development-security_updates: {
+				"development security updates": {
 					dependency-type: "development",
 					applies-to: "security-updates"
 				}
@@ -39,11 +39,11 @@
 		{
 			package-ecosystem: "gitsubmodule",
 			groups: {
-				git_submodules-new_releases: {
+				"new releases": {
 					applies-to: "version-updates",
 					patterns: ["*"]
 				},
-				git_submodules-security_updates: {
+				"security updates": {
 					applies-to: "security-updates",
 					patterns: ["*"]
 				}
@@ -65,11 +65,11 @@
 		{
 			package-ecosystem: "github-actions",
 			groups: {
-				github_actions-new_releases: {
+				"new releases": {
 					applies-to: "version-updates",
 					patterns: ["*"]
 				},
-				github_actions-security_updates: {
+				"security updates": {
 					applies-to: "security-updates",
 					patterns: ["*"]
 				}
