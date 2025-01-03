@@ -29,6 +29,10 @@
 		"npm.scriptExplorerExclude": [
 			"preinstall",
 			"pretest"
+		],
+		"github-actions.workflows.pinned.workflows": [
+			"Project/.github/workflows/build-test.yml",
+			"Project/.github/workflows/publish.yml"
 		]
 	},
 	"tasks": {
