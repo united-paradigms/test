@@ -39,8 +39,8 @@
 		{
 			package-ecosystem: "gitsubmodule",
 			groups: {
-				git_submodules-new_releases: {applies-to: "version-updates"},
-				git_submodules-security_updates: {applies-to: "security-updates"}
+				a: {applies-to: "version-updates"},
+				b: {applies-to: "security-updates"}
 			},
 			
 			directory: "/",
@@ -59,8 +59,8 @@
 		{
 			package-ecosystem: "github-actions",
 			groups: {
-				github_actions-new_releases: {applies-to: "version-updates"},
-				github_actions-security_updates: {applies-to: "security-updates"}
+				c: {applies-to: "version-updates"},
+				d: {applies-to: "security-updates"}
 			},
 			
 			directory: "/",
