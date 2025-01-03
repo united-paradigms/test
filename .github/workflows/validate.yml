@@ -1,5 +1,5 @@
 {
-	name: "✅ Validate",
+	name: "✅ Validate Commit",
 	on: {
 		push: {},
 		pull_request: {types: ["opened", "synchronize", "reopened"]}
@@ -45,7 +45,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						draft: true,
-						tag_name: "a2",
+						tag_name: "A3",
 						
 						files: "Product.zip",
 						preserve_order: true,
