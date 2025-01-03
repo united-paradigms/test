@@ -51,6 +51,11 @@
 						preserve_order: true,
 						fail_on_unmatched_files: true
 					}
+				},
+				{
+					name: "Annotate",
+					uses: "dkhunt27/action-annotations@v1",
+					with: {msg: "# Release\n\n**URL**: ${{steps.prepare-release.outputs.url}}"}
 				}
 			]
 		}
