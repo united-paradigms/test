@@ -1,9 +1,9 @@
 {
   name: "🍽️ Prepare Release",
-  run-name: "${{github.event.release.name}}",
   on: {
     push: {branches: "main"}
   },
+  run-name: "${{github.event.head_commit.message}}",
   
   jobs: {
     build-test: {

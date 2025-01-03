@@ -1,5 +1,5 @@
 import {src, dest, series} from "gulp"
-import {clean} from "../clean/main.ts"
+import {clean} from "./clean.ts"
 import jsonEditor from "gulp-json-editor"
 import jsonMinify from "gulp-jsonminify"
 

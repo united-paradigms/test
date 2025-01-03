@@ -1,3 +1,3 @@
-export {clean} from "./clean/main.ts"
-export {build, cleanBuild} from "./build/main.ts"
-export {watch, cleanWatch} from "./watch/main.ts"
+export {clean} from "./clean.ts"
+export {build, cleanBuild} from "./build.ts"
+export {watch, cleanWatch} from "./watch.ts"

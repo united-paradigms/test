@@ -1,9 +1,9 @@
 {
   name: "📢 Publish Package to NPM",
-  run-name: "${{github.event.release.name}}",
   on: {
     release: {types: ["published"]}
   },
+  run-name: "${{github.event.release.name}}",
   concurrency: {group: "publish"},
   
   jobs: {

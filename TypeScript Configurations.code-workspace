@@ -5,8 +5,8 @@
 		{"path": "./tests/", "name": "Tests"},
 		{"path": "./product/", "name": "Product"},
 		{"path": "./artifacts/", "name": "Artifacts"},
-		{"path": "./scripts/", "name": "Scripts"},
 		{"path": "./deployment/", "name": "Deployment"},
+		{"path": "./scripts/", "name": "Scripts"},
 		{"path": "./docs/", "name": "Documentation"},
 		{"path": "./", "name": "Project"}
 	],

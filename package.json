@@ -37,7 +37,9 @@
 		"preinstall": "npm run-script git-hooks-register",
 		
 		"pretest": "npm run-script clean-build",
-		"test": "./scripts/tests/test.sh"
+		"test": "./scripts/tests/test.sh",
+		
+		"package-version-shorthand": "./scripts/deployment/package-version-shorthand.sh"
 	},
 	"exports": {
 		".": "./main.d.ts",

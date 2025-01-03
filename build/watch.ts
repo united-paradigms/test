@@ -1,6 +1,6 @@
 import {watch as gulpWatch, series} from "gulp"
-import {cleanBuild} from "../build/main.ts"
-import {buildGlob} from "../build/main.ts"
+import {cleanBuild} from "../build/build.ts"
+import {buildGlob} from "../build/build.ts"
 import {deleteAsync} from "del"
 import {
 	join as joinPaths,
