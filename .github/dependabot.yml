@@ -4,7 +4,7 @@
 		{
 			package-ecosystem: "npm",
 			groups: {
-				npm-production-new_releases: {
+				"production new release": {
 					dependency-type: "production",
 					applies-to: "version-updates"
 				},
