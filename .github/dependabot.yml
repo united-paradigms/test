@@ -2,10 +2,51 @@
 	version: 2,
 	updates: [
 		{
+			package-ecosystem: "npm",
+			groups: {
+				npm-production-new_releases: {
+					dependency-type: "production",
+					applies-to: "version-updates"
+				},
+				npm-production-security_updates: {
+					dependency-type: "production",
+					applies-to: "security-updates"
+				},
+				npm-development-new_releases: {
+					dependency-type: "development",
+					applies-to: "version-updates"
+				},
+				npm-development-security_updates: {
+					dependency-type: "development",
+					applies-to: "security-updates"
+				}
+			},
+			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
+			versioning-strategy: "increase-if-necessary",
+			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["ciosciaa"],
+			assignees: ["ciosciaa"],
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
+		},
+		{
 			package-ecosystem: "gitsubmodule",
 			groups: {
-				zs: {applies-to: "version-updates"},
-				b: {applies-to: "security-updates"}
+				git_submodules-new_releases: {
+					applies-to: "version-updates",
+					patterns: ["*"]
+				},
+				git_submodules-security_updates: {
+					applies-to: "security-updates",
+					patterns: ["*"]
+				}
 			},
 			
 			directory: "/",
@@ -24,8 +65,14 @@
 		{
 			package-ecosystem: "github-actions",
 			groups: {
-				c: {applies-to: "version-updates"},
-				d: {applies-to: "security-updates"}
+				github_actions-new_releases: {
+					applies-to: "version-updates",
+					patterns: ["*"]
+				},
+				github_actions-security_updates: {
+					applies-to: "security-updates",
+					patterns: ["*"]
+				}
 			},
 			
 			directory: "/",
