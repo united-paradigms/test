@@ -59,8 +59,8 @@
 		{
 			package-ecosystem: "github-actions",
 			groups: {
-				new_releases: {applies-to: "version-updates"},
-				security_updates: {applies-to: "security-updates"}
+				a: {applies-to: "version-updates"},
+				b: {applies-to: "security-updates"}
 			},
 			
 			directory: "/",
