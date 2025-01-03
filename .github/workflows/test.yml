@@ -18,7 +18,7 @@
     build-test: {
       name: "🔨 Build & Test",
       if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
-      permissions: {contents: "read"},
+      permissions: {contents: "write"},
       
       runs-on: "ubuntu-24.04",
       timeout-minutes: 5,

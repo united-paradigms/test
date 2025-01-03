@@ -11,6 +11,7 @@
 2. New commit message scheme?
 3. Graphics
 4. General-purpose gitignore entries.
+5. Update contributing file with branch rulesets info.
 
 1. Git hooks?
 2. NPM dry run script or environment integration.
@@ -18,6 +19,8 @@
 1. GitHub environment (And update workflows)
 2. GitHub require status checks for branch protection?
 3. GitHub packages and attestations?
+4. dependabot.yml
+5. codeql advanced file config.
 
 1. Publicizing a release releases the build via production environment.
 2. Make feature requests and issues issue templates.
