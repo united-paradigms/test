@@ -9,7 +9,8 @@
 			versioning-strategy: "increase-if-necessary",
 			
 			labels: ["Dependencies"],
-			open-pull-requests-limit: 4
+			open-pull-requests-limit: 4,
+   			rebase-strategy: "2"
 		}
 	]
 }
