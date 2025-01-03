@@ -4,7 +4,7 @@
 		{
 			package-ecosystem: "gitsubmodule",
 			groups: {
-				submodules: {applies-to: "version-updates"},
+				zs: {applies-to: "version-updates"},
 				b: {applies-to: "security-updates"}
 			},
 			
