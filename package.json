@@ -2,7 +2,7 @@
 	"name": "@united-paradigms/jkfgorwjfoiewjfewoi",
 	"description": "Structured library of TypeScript configuration templates and partials",
 	"keywords": ["TypeScript", "configuration", "tsconfig", "config", "templates", "partials"],
-	"version": "0.0.8",
+	"version": "0.0.10",
 	
 	"homepage": "https://github.com/united-paradigms/test/",
 	"repository": {

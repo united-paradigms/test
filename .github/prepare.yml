@@ -1,53 +1,53 @@
 {
-  name: "🍽️ Prepare Release",
-  on: {
-    push: {branches: "main"}
-  },
-  run-name: "${{github.event.head_commit.message}}",
-  
-  jobs: {
-    build-test: {
-      name: "🛠️ Build & Test",
-      uses: "./.github/workflows/test.yml"
-    },
-    prepare: {
-      name: "🍳 Prepare",
-      needs: "build-test",
-      permissions: {contents: "write"},
-      
-      runs-on: "ubuntu-24.04",
-      timeout-minutes: 5,
-      
-      steps: [
-        {
-          id: "artifacts-download",
-          name: "📥 Artifacts: Download",
-          
-          uses: "actions/download-artifact@v4.1.8",
-          with: {name: "${{needs.build-test.outputs.build-artifact-identifier}}"}
-        },
-        {
-          id: "prepare-archive",
-          name: "🍱 Prepare: Archive",
-          
-          uses: "thedoctor0/zip-release@0.7.6",
-          with: {filename: "Product.zip"}
-        },
-        {
-          id: "prepare-release",
-          name: "🔪 Prepare: Release",
-          
-          uses: "softprops/action-gh-release@v2.1.0",
-          with: {
-            draft: true,
-            tag_name: "idk",
-            
-            files: "Product.zip",
-            preserve_order: true,
-            fail_on_unmatched_files: true
-          }
-        }
-      ]
-    }
-  }
+	name: "🍽️ Prepare Release",
+	on: {
+		push: {branches: "main"}
+	},
+	run-name: "${{github.event.head_commit.message}}",
+	
+	jobs: {
+		build-test: {
+			name: "🛠️ Build & Test",
+			uses: "./.github/workflows/test.yml"
+		},
+		prepare: {
+			name: "🍳 Prepare",
+			needs: "build-test",
+			permissions: {contents: "write"},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "artifacts-download",
+					name: "📥 Artifacts: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {name: "${{needs.build-test.outputs.build-artifact-identifier}}"}
+				},
+				{
+					id: "prepare-archive",
+					name: "🍱 Prepare: Archive",
+					
+					uses: "thedoctor0/zip-release@0.7.6",
+					with: {filename: "Product.zip"}
+				},
+				{
+					id: "prepare-release",
+					name: "🔪 Prepare: Release",
+					
+					uses: "softprops/action-gh-release@v2.1.0",
+					with: {
+						draft: true,
+						tag_name: "idk",
+						
+						files: "Product.zip",
+						preserve_order: true,
+						fail_on_unmatched_files: true
+					}
+				}
+			]
+		}
+	}
 }
