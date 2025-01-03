@@ -3,14 +3,78 @@
 	updates: [
 		{
 			package-ecosystem: "npm",
-			directory: "/",
-			schedule: {interval: "daily"},
+			groups: {
+				production-new_releases: {
+					dependency-type: "production",
+					applies-to: "version-updates"
+				},
+				production-security_updates: {
+					dependency-type: "production",
+					applies-to: "security-updates"
+				},
+				development-new_releases: {
+					dependency-type: "development",
+					applies-to: "version-updates"
+				},
+				development-security_updates: {
+					dependency-type: "development",
+					applies-to: "security-updates"
+				}
+			},
 			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
 			versioning-strategy: "increase-if-necessary",
 			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["ciosciaa"],
+			assignees: ["ciosciaa"],
 			labels: ["Dependencies"],
-			open-pull-requests-limit: 4,
-   			rebase-strategy: "2"
+			open-pull-requests-limit: 4
+		},
+		{
+			package-ecosystem: "gitsubmodule",
+			groups: {
+				new_releases: {applies-to: "version-updates"},
+				security_updates: {applies-to: "security-updates"}
+			},
+			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
+			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["ciosciaa"],
+			assignees: ["ciosciaa"],
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
+		},
+		{
+			package-ecosystem: "github-actions",
+			groups: {
+				new_releases: {applies-to: "version-updates"},
+				security_updates: {applies-to: "security-updates"}
+			},
+			
+			directory: "/",
+			schedule: {
+				interval: "daily",
+				time: "00:00",
+				timezone: "Etc/UTC"
+			},
+			
+			commit-message: {prefix: "[Dependencies] "},
+			reviewers: ["ciosciaa"],
+			assignees: ["ciosciaa"],
+			labels: ["Dependencies"],
+			open-pull-requests-limit: 4
 		}
 	]
 }
