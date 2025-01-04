@@ -80,7 +80,7 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {
 						name: "${{env.arifact-prefix}}${{matrix.name}}",
-						path: "./",
+						path: "../",
 						if-no-files-found: "error"
 					}
 				}

@@ -64,7 +64,10 @@
 					name: "📥 Analysis Preparation Artifact: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{matrix.preparation_artifact-identifier}}"}
+					with: {
+						name: "${{matrix.preparation_artifact-identifier}}",
+						path: "../"
+					}
 				},
 				# {
 				# 	id: "temp",
