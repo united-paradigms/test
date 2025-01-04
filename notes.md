@@ -5,7 +5,8 @@
 5. Link template TS configuration files to `build` and `test`.
 6. Shared build/test/deployment module and correct types.
 7. Gulp CWDs check
-1. Move markdown utilities to new package.
+8. Move markdown utilities to new package.
+9. Clean commands for artifacts.
 
 1. Create project readme and license (and update package.json license!).
 2. New commit message scheme?

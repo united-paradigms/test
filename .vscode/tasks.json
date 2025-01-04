@@ -4,7 +4,6 @@
 		{"type": "npm", "script": "build", "hide": true},
 		{"type": "npm", "script": "clean", "hide": true},
 		{"type": "npm", "script": "clean-build", "hide": true},
-		{"type": "npm", "script": "project-archive", "hide": true},
 		{"type": "npm", "script": "watch", "hide": true},
 		{"type": "npm", "script": "clean-watch", "hide": true},
 		{"type": "npm", "script": "test", "hide": true},
