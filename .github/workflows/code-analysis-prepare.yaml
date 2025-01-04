@@ -36,6 +36,9 @@
 				},
 				fail-fast: false
 			},
+			env: {
+				arifact-prefix: "🥼 CodeQL Preparation - "
+			},
 			
 			name: "🥼 Code Analysis: Prepare (${{matrix.name}})",
 			permissions: {
@@ -56,7 +59,7 @@
 				},
 				{
 					id: "codeql-prepare",
-					name: "📜 CodeQL: Prepare",
+					name: "🥼 CodeQL: Prepare",
 					
 					uses: "github/codeql-action/init@v3.28.0",
 					with: {
@@ -75,12 +78,12 @@
 					name: "📤 CodeQL Product: Artifact Upload",
 					
 					uses: "actions/upload-artifact@v4.5.0",
-					with: {name: "📜 CodeQL Setup - ${{matrix.name}}", path: "./"}
+					with: {name: "${{env.arifact-prefix}}${{matrix.name}}", path: "./"}
 				}
 			],
 			outputs: {
-				"preparation-javascript-artifact-identifier": "📜 CodeQL Setup - JavaScript",
-				"preparation-github_actions-artifact-identifier": "📜 CodeQL Setup - GitHub Actions"
+				"preparation-javascript-artifact-identifier": "${{env.arifact-prefix}}JavaScript",
+				"preparation-github_actions-artifact-identifier": "${{env.arifact-prefix}}GitHub Actions"
 			}
 		}
 	}

@@ -3,8 +3,12 @@
 	on: {
 		workflow_call: {
 			outputs: {
+				built_project_artifact-identifier: {
+					description: "Identifier of the built project artifact",
+					value: "${{jobs.build.outputs.built_project_artifact-identifier}}"
+				},
 				product_artifact-identifier: {
-					description: "Identifier of the built product artifact",
+					description: "Identifier of the product artifact",
 					value: "${{jobs.build.outputs.product_artifact-identifier}}"
 				}
 			}
@@ -13,6 +17,11 @@
 	
 	jobs: {
 		build: {
+			env: {
+				built_project_artifact-identifier: "📦 Built Project",
+				product_artifact-identifier: "🔨 Product"
+			},
+			
 			name: "🔨 Build",
 			permissions: {contents: "read"},
 			
@@ -62,14 +71,30 @@
 					run: "npm run-script build"
 				},
 				{
-					id: "build-artifacts_upload",
-					name: "📤 Build: Artifacts Upload",
+					id: "built_project-artifact_upload",
+					name: "📤 Built Project: Artifact Upload",
 					
 					uses: "actions/upload-artifact@v4.5.0",
-					with: {name: "🔨 Build", path: "./product/"}
+					with: {
+						name: "${{env.built_project_artifact-identifier}}",
+						path: "./"
+					}
+				},
+				{
+					id: "product-artifact_upload",
+					name: "📤 Product: Artifact Upload",
+					
+					uses: "actions/upload-artifact@v4.5.0",
+					with: {
+						name: "${{env.product_artifact-identifier}}",
+						path: "./product/"
+					}
 				}
 			],
-			outputs: {product_artifact-identifier: "🔨 Build"}
+			outputs: {
+				built_project_artifact-identifier: "${{env.built_project_artifact-identifier}}",
+				product_artifact-identifier: "${{env.product_artifact-identifier}}"
+			}
 		}
 	}
 }

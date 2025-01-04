@@ -3,8 +3,8 @@
 	on: {
 		workflow_call: {
 			inputs: {
-				product_artifact-identifier: {
-					description: "Identifier of the product artifact to test",
+				built_project_artifact-identifier: {
+					description: "Identifier of the built project artifact to test",
 					type: "string",
 					required: true
 				}
@@ -24,15 +24,15 @@
 			
 			steps: [
 				{
-					id: "product_artifact-download",
-					name: "📥 Product Artifact: Download",
+					id: "built_project_artifact-download",
+					name: "📥 Built Project Artifact: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{inputs.product_artifact-identifier}}"}
+					with: {name: "${{inputs.built_project_artifact-identifier}}"}
 				},
 				{
-					id: "product_artifact-test",
-					name: "🧪 Product Artifact: Test",
+					id: "built_project_artifact-test",
+					name: "🧪 Built Project Artifact: Test",
 					
 					run: "npm run-script test"
 				}

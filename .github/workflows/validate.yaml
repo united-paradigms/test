@@ -34,7 +34,7 @@
 			
 			uses: "./.github/workflows/test.yaml",
 			with: {
-				product_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}"
+				built_project_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}"
 			}
 		},
 		code_analysis-analyze: {
@@ -46,7 +46,7 @@
 			
 			uses: "./.github/workflows/code-analysis-analyze.yaml",
 			with: {
-				target_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}",
+				target_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}",
 				preparation-javascript-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-javascript-artifact-identifier}}",
 				preparation-github_actions-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-github_actions-artifact-identifier}}"
 			}
