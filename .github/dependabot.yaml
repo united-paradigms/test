@@ -31,8 +31,8 @@
 			versioning-strategy: "increase-if-necessary",
 			
 			commit-message: {prefix: "[Dependencies] "},
-			reviewers: ["ciosciaa"],
-			assignees: ["ciosciaa"],
+			reviewers: ["@united-paradigms/devops"],
+			assignees: ["@united-paradigms/devops"],
 			labels: ["Dependencies"],
 			open-pull-requests-limit: 4
 		},

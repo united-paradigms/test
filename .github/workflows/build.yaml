@@ -18,7 +18,8 @@
 	jobs: {
 		build: {
 			env: {
-				build_project-archive_location: "./project-archive.tar.gz",
+				build_project-archive-directory: "./artifacts/tar-ops-action/",
+				build_project-archive-filename: "project-archive.tar.gz",
 				built_project_artifact-identifier: "📦 Built Project",
 				product_artifact-identifier: "🔨 Product"
 			},
@@ -72,6 +73,12 @@
 					run: "npm run-script build"
 				},
 				{
+					id: "build_project-archive-setup",
+					name: "📁 Build Project: Archive Setup",
+					
+					run: "mkdir -p ${{env.build_project-archive-directory}}"
+				},
+				{
 					id: "built_project-archive",
 					name: "📄 Built Project: Compression",
 					
@@ -79,7 +86,7 @@
 					with: {
 						operation: "compress",
 						files: "./",
-						outPath: "${{env.build_project-archive_location}}"
+						outPath: "${{env.build_project-archive-directory}}${{env.build_project-archive-filename}}"
 					}
 				},
 				{
@@ -89,7 +96,7 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {
 						name: "${{env.built_project_artifact-identifier}}",
-						path: "${{env.build_project-archive_location}}",
+						path: "${{env.build_project-archive-directory}}${{env.build_project-archive-filename}}",
 						if-no-files-found: "error"
 					}
 				},
