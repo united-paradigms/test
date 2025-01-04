@@ -8,14 +8,14 @@
 					description: "Code analysis preparation identifier for JavaScript and TypeScript",
 					value: "${{jobs.code_analysis-prepare.outputs.preparation-javascript-identifier}}"
 				},
-				preparation-actions-identifier: {
+				preparation-github_actions-identifier: {
 					description: "Code analysis preparation identifier for GitHub Actions",
-					value: "${{jobs.code_analysis-prepare.outputs.preparation-actions-identifier}}"
+					value: "${{jobs.code_analysis-prepare.outputs.preparation-github_actions-identifier}}"
 				}
 			}
 		}
 	},
-	run-name: "github.event.head_commit.message",
+	run-name: "${{github.event.head_commit.message}}",
 	
 	jobs: {
 		code_analysis-prepare: {
@@ -24,14 +24,12 @@
 					include: [
 						{
 							name: "JavaScript",
-							identifier: "javascript",
 							language: "javascript-typescript",
 							
 							build-mode: "none"
 						},
 						{
 							name: "GitHub Actions",
-							identifier: "actions",
 							language: "actions",
 							
 							build-mode: "none"
@@ -85,7 +83,8 @@
 				}
 			],
 			outputs: {
-				"preparation-${{matrix.identifier}}-identifier": "📜 CodeQL Setup - ${{matrix.name}}"
+				"preparation-javascript-identifier": "📜 CodeQL Setup - JavaScript",
+				"preparation-github_actions-identifier": "📜 CodeQL Setup - GitHub Actions"
 			}
 		}
 	}
