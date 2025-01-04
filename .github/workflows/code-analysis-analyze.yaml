@@ -44,7 +44,7 @@
 			
 			name: "🥼 Code Analysis: Analyze (${{matrix.name}})",
 			permissions: {
-				
+				security-events: write
 			},
 			
 			runs-on: "ubuntu-24.04",
