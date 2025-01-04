@@ -25,6 +25,7 @@
 2. Make feature requests and issues issue templates.
 3. Published packages aren't public???
 4. Shift code owners and anywhere else to group instead of `ciosciaa`.
+5. Add build gulp step for tar.gz of entire project root.
 
 In future:
 - Watch for `dependabot.yml` group names and commit messages.

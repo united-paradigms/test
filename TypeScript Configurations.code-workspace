@@ -96,6 +96,25 @@
 				"problemMatcher": []
 			},
 			{
+				"label": "Archive Project",
+				"detail": "Archives the entire project in as a \"tar.gz\" file",
+				"group": "build",
+				"icon": {"id": "refresh"},
+				
+				"type": "shell",
+				"command": "./scripts/build/project-archive.sh",
+				"options": {"cwd": "${workspaceFolder:Project}"},
+				
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
 				"label": "Watch",
 				"detail": "Builds changes to source files as they happen",
 				"group": "build",

@@ -29,6 +29,7 @@
 		"build": "./scripts/build/build.sh",
 		"clean": "./scripts/build/clean.sh",
 		"clean-build": "./scripts/build/clean-build.sh",
+		"project-archive": "./scripts/build/project-archive.sh",
 		"watch": "./scripts/build/watch.sh",
 		"clean-watch": "./scripts/build/clean-watch.sh",
 		

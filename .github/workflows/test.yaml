@@ -37,7 +37,7 @@
 					uses: "nxtlvlsoftware/tar-ops-action@v1.0.1",
 					with: {
 						operation: "extract",
-						files: "./built_project.tar.gz",
+						files: "./project-archive.tar.gz",
 						outPath: "./"
 					}
 				},
