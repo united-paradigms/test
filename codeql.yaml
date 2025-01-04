@@ -2,11 +2,16 @@
 	name: "CodeQL Configuration",
 	
 	disable-default-queries: true,
-	packs: [
-		"codeql/javascript-all",
-		"codeql/actions-queries",
-		"codeql/yaml",
-		"codeql/regex",
-		"codeql/typos"
-	]
+	packs: {
+		javascript: [
+			"codeql/javascript-all",
+			"codeql/regex",
+			"codeql/typos"
+		],
+		actions: [
+			"codeql/actions-queries",
+			"codeql/yaml",
+			"codeql/typos"
+		]
+	}
 }
