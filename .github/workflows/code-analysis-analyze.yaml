@@ -66,17 +66,17 @@
 					uses: "actions/download-artifact@v4.1.8",
 					with: {name: "${{matrix.preparation_artifact-identifier}}"}
 				},
-				{
-					id: "temp",
-					name: "Temp",
-					
-					uses: "actions/upload-artifact@v4.5.0",
-					with: {
-						name: "Temp",
-						path: "./",
-						if-no-files-found: "error"
-					}
-				},
+				# {
+				# 	id: "temp",
+				# 	name: "Temp",
+				# 	
+				# 	uses: "actions/upload-artifact@v4.5.0",
+				# 	with: {
+				# 		name: "Temp",
+				# 		path: "./",
+				# 		if-no-files-found: "error"
+				# 	}
+				# },
 				{
 					id: "codeql-analyze",
 					name: "🥼 CodeQL: Analyze",
