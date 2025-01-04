@@ -58,6 +58,12 @@
 					}
 				},
 				{
+					id: "build_project-archive-setup",
+					name: "📁 Build Project: Archive Setup",
+					
+					run: "mkdir -p ./artifacts/validate/prepare-archive/"
+				},
+				{
 					id: "prepare-archive",
 					name: "🍱 Prepare: Archive",
 					
