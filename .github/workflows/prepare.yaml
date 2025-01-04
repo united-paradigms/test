@@ -1,0 +1,74 @@
+{
+	name: "🍳 Prepare",
+	on: {
+		workflow_call: {
+			inputs: {
+				product_artifact-identifier: {
+					description: "Identifier of the product artifact",
+					type: "string",
+					required: true
+				}
+			}
+		}
+	},
+	
+	jobs: {
+		prepare: {
+			name: "🍳 Prepare",
+			permissions: {
+				contents: "write"
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "artifacts-download",
+					name: "📥 Artifacts: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {
+						name: "${{inputs.product_artifact-identifier}}"
+					}
+				},
+				{
+					id: "build_project-archive-setup",
+					name: "📁 Build Project: Archive Setup",
+					
+					run: "mkdir -p ./artifacts/validate/prepare-archive/"
+				},
+				{
+					id: "prepare-archive",
+					name: "🍱 Prepare: Archive",
+					
+					uses: "thedoctor0/zip-release@0.7.6",
+					with: {
+						filename: "./artifacts/validate/prepare-archive/Product.zip"
+					}
+				},
+				{
+					id: "prepare-release",
+					name: "🔪 Prepare: Release",
+					
+					uses: "softprops/action-gh-release@v2.1.0",
+					with: {
+						draft: true,
+						tag_name: "versions/fg",
+						
+						files: "./artifacts/validate/prepare-archive/Product.zip",
+						preserve_order: true,
+						fail_on_unmatched_files: true
+					}
+				},
+				{
+					name: "Annotate",
+					uses: "dkhunt27/action-annotations@v1",
+					with: {
+						msg: "Release URL: ${{steps.prepare-release.outputs.url}}"
+					}
+				}
+			]
+		}
+	}
+}
