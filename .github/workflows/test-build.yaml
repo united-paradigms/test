@@ -1,21 +1,21 @@
 {
-	name: "🛠️ Build & Test Reference",
+	name: "🛠️ Test Build",
 	on: {
-		workflow_call: {
-			outputs: {
-				product-identifier: {
-					description: "Product identifier",
-					value: "${{jobs.build-test.outputs.product-identifier}}"
-				}
-			}
-		}
+		# workflow_call: {
+		# 	outputs: {
+		# 		product-identifier: {
+		# 			description: "Product identifier",
+		# 			value: "${{jobs.build-test.outputs.product-identifier}}"
+		# 		}
+		# 	}
+		# }
 	},
 	run-name: "",
 	
 	jobs: {
 		build-test: {
 			name: "🔨 Build & Test",
-			# permissions: {contents: "read"},
+			permissions: {contents: "read"},
 			
 			runs-on: "ubuntu-24.04",
 			timeout-minutes: 5,

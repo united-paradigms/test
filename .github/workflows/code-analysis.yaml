@@ -1,0 +1,113 @@
+{
+	name: "CodeQL Advanced",
+	on: {
+		push: {branches: ["main"]},
+		pull_request: {branches: ["main"]}
+	},
+	
+	jobs: {
+		code_analysis-prepare: {
+			name: "🧪 Code Analysis: Prepare",
+			permissions: {
+				contents: "read",
+				actions: "read",
+				packages: "read",
+				security-events: "write"
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			strategy: {
+				matrix: {
+					include: [
+						{
+							language: "javascript-typescript",
+							name: "JavaScript",
+							
+							build-mode: "manual"
+						},
+						{
+							language: "actions",
+							name: "GitHub Actions",
+							
+							build-mode: "none"
+						}
+					]
+				},
+				fail-fast: false
+			},
+			steps: [
+				{
+					id: "codeql-initialize",
+					name: "📜 CodeQL: Initialize",
+					
+					uses: "github/codeql-action/init@v3.28.0",
+					with: {
+						languages: "${{matrix.language}}",
+						build-mode: "${{matrix.build-mode}}",
+						# config-file: "?"
+						
+						dependency-caching: true,
+						db-location: "./artifacts/codeql/",
+						debug-artifact-name: "debug",
+						debug-database-name: "debug-database"
+					}
+				},
+				{
+					id: "build-artifacts_upload",
+					name: "📤 Build: Artifacts Upload",
+					
+					uses: "actions/upload-artifact@v4.5.0",
+					with: {name: "📜 CodeQL Setup: ${{matrix.name}}", path: "./"}
+				}
+			]
+		}
+		# ,
+		# code_analysis-analyze: {
+		# 	name: "🔍 Code Analysis: Analyze",
+		# 	permissions: {
+		# 		contents: "read",
+		# 		actions: "read",
+		# 		packages: "read",
+		# 		security-events: "write"
+		# 	},
+		# 	
+		# 	runs-on: "ubuntu-24.04",
+		# 	timeout-minutes: 5,
+		# 	
+		# 	strategy: {
+		# 		matrix: {
+		# 			include: [
+		# 				{
+		# 					language: "javascript-typescript",
+		# 					name: "JavaScript",
+		# 					
+		# 					build-mode: "manual"
+		# 				},
+		# 				{
+		# 					language: "actions",
+		# 					name: "GitHub Actions",
+		# 					
+		# 					build-mode: "none"
+		# 				}
+		# 			]
+		# 		},
+		# 		fail-fast: false
+		# 	},
+		# 	steps: [
+		# 		{
+		# 			id: "codeql-analyze",
+		# 			name: "CodeQL: Analyze",
+		# 			
+		# 			uses: "github/codeql-action/analyze@v3.28.0",
+		# 			with: {
+		# 				# check_name: "asdf",
+		# 				output: "./artifacts/codeql/",
+		# 				category: "${{matrix.name}}"
+		# 			}
+		# 		}
+		# 	]
+		# }
+	}
+}

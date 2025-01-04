@@ -1,22 +1,22 @@
 {
 	name: "✅ Validate Commit",
 	on: {
-		push: {},
-		pull_request: {types: ["opened", "synchronize", "reopened"]}
+		# push: {},
+		# pull_request: {types: ["opened", "synchronize", "reopened"]}
 	},
 	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
 	
 	jobs: {
-		build-test: {
+		test-build: {
 			name: "🛠️ Build & Test",
 			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
 			permissions: {contents: "read"},
 			
-			uses: "./.github/workflows/build-test.yml"
+			uses: "./.github/workflows/test-build.yaml"
 		},
 		prepare: {
 			name: "🍳 Prepare",
-			needs: "build-test",
+			needs: "test-build",
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {contents: "write"},
 			
@@ -29,7 +29,7 @@
 					name: "📥 Artifacts: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{needs.build-test.outputs.product-identifier}}"}
+					with: {name: "${{needs.test-build.outputs.product-identifier}}"}
 				},
 				{
 					id: "prepare-archive",

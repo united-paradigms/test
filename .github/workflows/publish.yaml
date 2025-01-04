@@ -1,21 +1,21 @@
 {
 	name: "📢 Publish Package to NPM",
 	on: {
-		release: {types: ["published"]}
+		# release: {types: ["published"]}
 	},
 	run-name: "${{github.event.release.name}}",
 	concurrency: {group: "publish"},
 	
 	jobs: {
-		build-test: {
+		test-build: {
 			name: "🛠️ Build & Test",
 			permissions: {contents: "read"},
 			
-			uses: "./.github/workflows/build-test.yml"
+			uses: "./.github/workflows/test-build.yaml"
 		},
 		publish: {
 			name: "📣 Publish",
-			needs: "build-test",
+			needs: "test-build",
 			permissions: {
 				contents: "read",
 				id-token: "write"
@@ -34,7 +34,7 @@
 					name: "📥 Artifacts: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{needs.build-test.outputs.product-identifier}}"}
+					with: {name: "${{needs.test-build.outputs.product-identifier}}"}
 				},
 				{
 					id: "publish-npm",

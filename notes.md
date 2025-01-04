@@ -16,12 +16,16 @@
 1. Git hooks?
 2. NPM dry run script or environment integration.
 
-1. GitHub environment (And update workflows)
-2. GitHub require status checks for branch protection?
-3. GitHub packages and attestations?
-4. dependabot.yml
-5. codeql advanced file config.
+1. GitHub require status checks/CodeQL check for branch protection? (would require dev branch)
+2. GitHub packages and attestations?
+3. Decide how to use annotations.
+4. Shift workflow to multi-job.
 
 1. Publicizing a release releases the build via production environment.
 2. Make feature requests and issues issue templates.
-3. Add the URL for the NPM release to environment.
+3. Published packages aren't public???
+4. Shift code owners and anywhere else to group instead of `ciosciaa`.
+
+In future:
+- Watch for `dependabot.yml` group names and commit messages.
+- CodeQL category?
