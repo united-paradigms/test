@@ -37,32 +37,6 @@
 			open-pull-requests-limit: 4
 		},
 		{
-			package-ecosystem: "gitsubmodule",
-			groups: {
-				"new releases": {
-					applies-to: "version-updates",
-					patterns: ["*"]
-				},
-				"security updates": {
-					applies-to: "security-updates",
-					patterns: ["*"]
-				}
-			},
-			
-			directory: "/",
-			schedule: {
-				interval: "daily",
-				time: "00:00",
-				timezone: "Etc/UTC"
-			},
-			
-			commit-message: {prefix: "[Dependencies] "},
-			reviewers: ["ciosciaa"],
-			assignees: ["ciosciaa"],
-			labels: ["Dependencies"],
-			open-pull-requests-limit: 4
-		},
-		{
 			package-ecosystem: "github-actions",
 			groups: {
 				"new releases": {

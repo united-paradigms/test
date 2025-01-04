@@ -22,14 +22,14 @@
 				matrix: {
 					include: [
 						{
-							language: "javascript-typescript",
 							name: "JavaScript",
+							language: "javascript-typescript",
 							
-							build-mode: "manual"
+							build-mode: "none"
 						},
 						{
-							language: "actions",
 							name: "GitHub Actions",
+							language: "actions",
 							
 							build-mode: "none"
 						}
