@@ -68,9 +68,9 @@
 						# config-file: "?"
 						
 						dependency-caching: true,
-						db-location: "./artifacts/codeql/",
-						debug-artifact-name: "debug",
-						debug-database-name: "debug-database"
+						# db-location: "./artifacts/codeql/",
+						# debug-artifact-name: "debug",
+						# debug-database-name: "debug-database"
 					}
 				},
 				{
