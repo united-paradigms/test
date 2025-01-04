@@ -44,12 +44,6 @@
 					uses: "actions/checkout@v4.2.2"
 				},
 				{
-					id: "setup-dependency_installation",
-					name: "📦 Setup: Dependency Installation",
-					
-					run: "codeql pack download codeql/javascript-all codeql/actions-queries codeql/yaml codeql/regex codeql/typos"
-				},
-				{
 					id: "codeql-prepare",
 					name: "🥼 CodeQL: Prepare",
 					
