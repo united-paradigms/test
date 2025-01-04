@@ -1,11 +1,21 @@
 {
-	name: "CodeQL Advanced",
+	name: "🔬 Code Analysis: Prepare",
 	on: {
-		# push: {branches: ["main"]},
-		# pull_request: {branches: ["main"]}
+		push: {},
+		workflow_call: {
+			outputs: {
+				preparation-javascript-identifier: {
+					description: "Code analysis preparation identifier for JavaScript and TypeScript",
+					value: "${{jobs.code_analysis-prepare.outputs.preparation-javascript-identifier}}"
+				},
+				preparation-actions-identifier: {
+					description: "Code analysis preparation identifier for GitHub Actions",
+					value: "${{jobs.code_analysis-prepare.outputs.preparation-actions-identifier}}"
+				}
+			}
+		}
 	},
-	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
-	concurrency: {group: "analysis"},
+	run-name: "github.event.head_commit.message",
 	
 	jobs: {
 		code_analysis-prepare: {
@@ -14,12 +24,14 @@
 					include: [
 						{
 							name: "JavaScript",
+							identifier: "javascript",
 							language: "javascript-typescript",
 							
 							build-mode: "none"
 						},
 						{
 							name: "GitHub Actions",
+							identifier: "actions",
 							language: "actions",
 							
 							build-mode: "none"
@@ -71,53 +83,10 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {name: "📜 CodeQL Setup - ${{matrix.name}}", path: "./"}
 				}
-			]
+			],
+			outputs: {
+				"preparation-${{matrix.identifier}}-identifier": "📜 CodeQL Setup - ${{matrix.name}}"
+			}
 		}
-		# ,
-		# code_analysis-analyze: {
-		# 	name: "🔍 Code Analysis: Analyze",
-		# 	permissions: {
-		# 		contents: "read",
-		# 		actions: "read",
-		# 		packages: "read",
-		# 		security-events: "write"
-		# 	},
-		# 	
-		# 	runs-on: "ubuntu-24.04",
-		# 	timeout-minutes: 5,
-		# 	
-		# 	strategy: {
-		# 		matrix: {
-		# 			include: [
-		# 				{
-		# 					language: "javascript-typescript",
-		# 					name: "JavaScript",
-		# 					
-		# 					build-mode: "manual"
-		# 				},
-		# 				{
-		# 					language: "actions",
-		# 					name: "GitHub Actions",
-		# 					
-		# 					build-mode: "none"
-		# 				}
-		# 			]
-		# 		},
-		# 		fail-fast: false
-		# 	},
-		# 	steps: [
-		# 		{
-		# 			id: "codeql-analyze",
-		# 			name: "CodeQL: Analyze",
-		# 			
-		# 			uses: "github/codeql-action/analyze@v3.28.0",
-		# 			with: {
-		# 				# check_name: "asdf",
-		# 				output: "./artifacts/codeql/",
-		# 				category: "${{matrix.name}}"
-		# 			}
-		# 		}
-		# 	]
-		# }
 	}
 }

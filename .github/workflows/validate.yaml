@@ -7,6 +7,13 @@
 	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
 	
 	jobs: {
+		code_analysis-prepare: {
+			name: "🛠️ Build & Test",
+			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
+			permissions: {contents: "read"},
+			
+			uses: "./.github/workflows/test-build.yaml"
+		},
 		test-build: {
 			name: "🛠️ Build & Test",
 			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
@@ -55,7 +62,7 @@
 				{
 					name: "Annotate",
 					uses: "dkhunt27/action-annotations@v1",
-					with: {msg: "# Release\n\n**URL**: ${{steps.prepare-release.outputs.url}}"}
+					with: {msg: "Release URL: ${{steps.prepare-release.outputs.url}}"}
 				}
 			]
 		}

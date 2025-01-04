@@ -1,14 +1,14 @@
 {
 	name: "🛠️ Test Build",
 	on: {
-		# workflow_call: {
-		# 	outputs: {
-		# 		product-identifier: {
-		# 			description: "Product identifier",
-		# 			value: "${{jobs.build-test.outputs.product-identifier}}"
-		# 		}
-		# 	}
-		# }
+		workflow_call: {
+			outputs: {
+				product-identifier: {
+					description: "Product identifier",
+					value: "${{jobs.build-test.outputs.product-identifier}}"
+				}
+			}
+		}
 	},
 	run-name: "",
 	
