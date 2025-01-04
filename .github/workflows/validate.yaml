@@ -16,14 +16,15 @@
 			
 			uses: "./.github/workflows/build.yaml"
 		},
-		code_analysis-prepare: {
-			name: "🥼 Code Analysis: Prepare",
+		code_analysis: {
+			name: "🥼 Code Analysis",
 			permissions: {
 				contents: "read",
+				packages: "read",
 				security-events: "write"
 			},
 			
-			uses: "./.github/workflows/code-analysis-prepare.yaml"
+			uses: "./.github/workflows/code-analysis.yaml"
 		},
 		test: {
 			name: "🔬 Test",
@@ -35,24 +36,9 @@
 				built_project_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}"
 			}
 		},
-		code_analysis-analyze: {
-			name: "🔬 Code Analysis: Analyze",
-			needs: ["build", "code_analysis-prepare"],
-			permissions: {
-				packages: read,
-				security-events: write
-			},
-			
-			uses: "./.github/workflows/code-analysis-analyze.yaml",
-			with: {
-				target_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}",
-				preparation-javascript-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-javascript-artifact-identifier}}",
-				preparation-github_actions-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-github_actions-artifact-identifier}}"
-			}
-		},
 		prepare: {
 			name: "🍳 Prepare",
-			needs: ["build", "test", "code_analysis-analyze"],
+			needs: ["build", "test", "code_analysis"],
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {
 				contents: "write"
