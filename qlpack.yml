@@ -1,7 +1,0 @@
-version: 1.0.1
-dependencies:
-  "codeql/javascript-all": "*"
-  "codeql/actions-queries": "*"
-  "codeql/yaml": "*"
-  "codeql/regex": "*"
-  "codeql/typos": "*"

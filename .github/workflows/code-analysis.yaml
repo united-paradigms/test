@@ -51,7 +51,6 @@
 					with: {
 						languages: "${{matrix.language}}",
 						build-mode: "${{matrix.build-mode}}",
-						config-file: "./codeql.yaml",
 						
 						dependency-caching: true,
 						debug-artifact-name: "debug",
