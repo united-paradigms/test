@@ -65,8 +65,7 @@
 					
 					uses: "actions/download-artifact@v4.1.8",
 					with: {
-						name: "${{matrix.preparation_artifact-identifier}}",
-						path: "../"
+						name: "${{matrix.preparation_artifact-identifier}}"
 					}
 				},
 				# {
@@ -86,6 +85,7 @@
 					
 					uses: "github/codeql-action/analyze@v3.28.0",
 					with: {
+						checkout_path: "./artifacts/codeql/",
 						output: "./artifacts/codeql/",
 						category: "${{matrix.name}}"
 					}
