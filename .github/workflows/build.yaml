@@ -18,8 +18,8 @@
 	jobs: {
 		build: {
 			env: {
-				build_project-compression_location: "./built_project.tar.gz",
-				# build_project-compression_location: "./artifacts/tar-ops-action/built_project.tar.gz",
+				# build_project-compression_location: "./built_project.tar.gz",
+				build_project-compression_location: "./artifacts/tar-ops-action/built_project.tar.gz",
 				built_project_artifact-identifier: "📦 Built Project",
 				product_artifact-identifier: "🔨 Product"
 			},
