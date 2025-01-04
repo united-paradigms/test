@@ -18,8 +18,7 @@
 	jobs: {
 		build: {
 			env: {
-				build_project-compression_location: "./built_project.tar.gz",
-				# build_project-compression_location: "./artifacts/tar-ops-action/built_project.tar.gz",
+				build_project-archive_location: "./project-archive.tar.gz",
 				built_project_artifact-identifier: "📦 Built Project",
 				product_artifact-identifier: "🔨 Product"
 			},
@@ -73,14 +72,14 @@
 					run: "npm run-script build"
 				},
 				{
-					id: "built_project-compression",
+					id: "built_project-archive",
 					name: "📄 Built Project: Compression",
 					
 					uses: "nxtlvlsoftware/tar-ops-action@v1.0.1",
 					with: {
 						operation: "compress",
 						files: "./",
-						outPath: "${{env.build_project-compression_location}}"
+						outPath: "${{env.build_project-archive_location}}"
 					}
 				},
 				{
@@ -90,7 +89,7 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {
 						name: "${{env.built_project_artifact-identifier}}",
-						path: "${{env.build_project-compression_location}}",
+						path: "${{env.build_project-archive_location}}",
 						if-no-files-found: "error"
 					}
 				},
