@@ -5,7 +5,7 @@
 	},
 	
 	jobs: {
-		code_analysis-prepare: {
+		code_analysis: {
 			strategy: {
 				matrix: {
 					include: [
@@ -26,7 +26,7 @@
 				fail-fast: false
 			},
 			
-			name: "🥼 Code Analysis: Prepare (${{matrix.name}})",
+			name: "🥼 Code Analysis: ${{matrix.name}}",
 			permissions: {
 				contents: "read",
 				packages: "read",
@@ -53,10 +53,10 @@
 						build-mode: "${{matrix.build-mode}}",
 						# config-file: "?"
 						
-						dependency-caching: true,
-						db-location: "./artifacts/codeql/",
-						debug-artifact-name: "debug",
-						debug-database-name: "debug-database"
+						# dependency-caching: true,
+						# db-location: "./artifacts/codeql/",
+						# debug-artifact-name: "debug",
+						# debug-database-name: "debug-database"
 					}
 				},
 				{
