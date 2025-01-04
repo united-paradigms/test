@@ -53,14 +53,18 @@
 					name: "📥 Artifacts: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{needs.build.outputs.product_artifact-identifier}}"}
+					with: {
+						name: "${{needs.build.outputs.product_artifact-identifier}}"
+					}
 				},
 				{
 					id: "prepare-archive",
 					name: "🍱 Prepare: Archive",
 					
 					uses: "thedoctor0/zip-release@0.7.6",
-					with: {filename: "Product.zip"}
+					with: {
+						filename: "./artifacts/validate/prepare-archive/Product.zip"
+					}
 				},
 				{
 					id: "prepare-release",
@@ -71,7 +75,7 @@
 						draft: true,
 						tag_name: "versions/fg",
 						
-						files: "Product.zip",
+						files: "./artifacts/validate/prepare-archive/Product.zip",
 						preserve_order: true,
 						fail_on_unmatched_files: true
 					}
@@ -79,7 +83,9 @@
 				{
 					name: "Annotate",
 					uses: "dkhunt27/action-annotations@v1",
-					with: {msg: "Release URL: ${{steps.prepare-release.outputs.url}}"}
+					with: {
+						msg: "Release URL: ${{steps.prepare-release.outputs.url}}"
+					}
 				}
 			]
 		}

@@ -74,6 +74,7 @@
 					
 					run: "npm run-script build"
 				},
+				
 				{
 					id: "build_project-archive-setup",
 					name: "📁 Build Project: Archive Setup",
@@ -99,7 +100,8 @@
 					with: {
 						name: "${{env.built_project_artifact-identifier}}",
 						path: "${{env.build_project-archive-directory}}${{env.build_project-archive-filename}}",
-						if-no-files-found: "error"
+						if-no-files-found: "error",
+						compression-level: 3
 					}
 				},
 				{
@@ -110,7 +112,8 @@
 					with: {
 						name: "${{env.product_artifact-identifier}}",
 						path: "./product/",
-						if-no-files-found: "error"
+						if-no-files-found: "error",
+						compression-level: 3
 					}
 				}
 			],
