@@ -59,7 +59,7 @@
 					name: "📤 Build: Artifacts Upload",
 					
 					uses: "actions/upload-artifact@v4.5.0",
-					with: {name: "📜 CodeQL Setup: ${{matrix.name}}", path: "./"}
+					with: {name: "📜 CodeQL Setup — ${{matrix.name}}", path: "./"}
 				}
 			]
 		}
