@@ -41,7 +41,10 @@
 			name: "🔬 Code Analysis: Analyze",
 			needs: ["build", "code_analysis-prepare"],
 			permissions: {
-				
+				actions: read,
+				contents: read,
+				packages: read,
+				security-events: write
 			},
 			
 			uses: "./.github/workflows/code-analysis-analyze.yaml",
@@ -56,10 +59,7 @@
 			needs: ["build", "test", "code_analysis-analyze"],
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {
-				actions: read,
-				contents: read,
-				packages: read,
-				security-events: write
+				contents: "write"
 			},
 			
 			runs-on: "ubuntu-24.04",
