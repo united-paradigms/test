@@ -52,13 +52,13 @@
 			timeout-minutes: 5,
 			
 			steps: [
-				{
-					id: "source_artifact-download",
-					name: "📥 Source Artifact: Download",
-					
-					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{inputs.target_artifact-identifier}}"}
-				},
+				# {
+				# 	id: "source_artifact-download",
+				# 	name: "📥 Source Artifact: Download",
+				# 	
+				# 	uses: "actions/download-artifact@v4.1.8",
+				# 	with: {name: "${{inputs.target_artifact-identifier}}"}
+				# },
 				{
 					id: "analysis_preparation_artifact-download",
 					name: "📥 Analysis Preparation Artifact: Download",
