@@ -68,9 +68,9 @@
 						# config-file: "?"
 						
 						dependency-caching: true,
-						# db-location: "./artifacts/codeql/",
-						# debug-artifact-name: "debug",
-						# debug-database-name: "debug-database"
+						db-location: "./artifacts/codeql/",
+						debug-artifact-name: "debug",
+						debug-database-name: "debug-database"
 					}
 				},
 				{
@@ -80,7 +80,7 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {
 						name: "${{env.arifact-prefix}}${{matrix.name}}",
-						path: "../",
+						path: "./",
 						if-no-files-found: "error"
 					}
 				}
