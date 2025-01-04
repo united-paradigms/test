@@ -7,15 +7,6 @@
 	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
 	
 	jobs: {
-		code_analysis-prepare: {
-			name: "🔬 Code Analysis: Prepare",
-			permissions: {
-				contents: "read",
-				security-events: "write"
-			},
-			
-			uses: "./.github/workflows/code-analysis-prepare.yaml"
-		},
 		build: {
 			name: "🛠️ Build",
 			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
@@ -24,6 +15,15 @@
 			},
 			
 			uses: "./.github/workflows/build.yaml"
+		},
+		code_analysis-prepare: {
+			name: "🥼 Code Analysis: Prepare",
+			permissions: {
+				contents: "read",
+				security-events: "write"
+			},
+			
+			uses: "./.github/workflows/code-analysis-prepare.yaml"
 		},
 		test: {
 			name: "🔬 Test",
