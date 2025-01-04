@@ -27,7 +27,7 @@
 					id: "built_project_artifact-download",
 					name: "📥 Built Project Artifact: Download",
 					
-					uses: "actions/download-artifact@v4.1.8",
+					uses: "pyTooling/download-artifact@v1.3.0",
 					with: {name: "${{inputs.built_project_artifact-identifier}}"}
 				},
 				{
