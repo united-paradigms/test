@@ -24,17 +24,22 @@
 			
 			steps: [
 				{
-					id: "built_project_artifact-download",
-					name: "📥 Built Project Artifact: Download",
+					id: "built_project-artifact_download",
+					name: "📥 Built Project: Artifact Download",
 					
-					uses: "pyTooling/download-artifact@v1.3.0",
+					uses: "actions/download-artifact@v4.1.8",
 					with: {name: "${{inputs.built_project_artifact-identifier}}"}
 				},
 				{
-					run: "ls"
-				},
-				{
-					run: "cd .. && ls"
+					id: "built_project-decompression",
+					name: "📄 Built Project: Decompression",
+					
+					uses: "nxtlvlsoftware/tar-ops-action@v1.0.1",
+					with: {
+						operation: "extract",
+						files: "./built_project.tar.gz",
+						outPath: "./"
+					}
 				},
 				{
 					id: "built_project_artifact-test",
