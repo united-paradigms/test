@@ -1,29 +1,59 @@
 {
 	name: "✅ Validate Commit",
 	on: {
-		# push: {},
-		# pull_request: {types: ["opened", "synchronize", "reopened"]}
+		push: {},
+		pull_request: {types: ["opened", "synchronize", "reopened"]}
 	},
 	run-name: "${{(github.event_name == 'push' && github.event.head_commit.message) || (github.event_name == 'pull_request' && github.event.pull_request.title) || github.run_id}}",
 	
 	jobs: {
 		code_analysis-prepare: {
-			name: "🛠️ Build & Test",
-			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
-			permissions: {contents: "read"},
+			name: "🔬 Code Analysis: Prepare",
+			permissions: {
+				contents: "read",
+				security-events: "write"
+			},
 			
-			uses: "./.github/workflows/test-build.yaml"
+			uses: "./.github/workflows/code-analysis-prepare.yaml"
 		},
-		test-build: {
-			name: "🛠️ Build & Test",
+		build: {
+			name: "🛠️ Build",
 			if: "${{github.event_name != 'pull_request' || (github.event_name == 'pull_request' && github.event.pull_request.head.repo.id != github.event.pull_request.base.repo.id)}}",
-			permissions: {contents: "read"},
+			permissions: {
+				contents: "read"
+			},
 			
-			uses: "./.github/workflows/test-build.yaml"
+			uses: "./.github/workflows/build.yaml"
+		},
+		test: {
+			name: "🔬 Test",
+			needs: "build",
+			permissions: {
+				
+			},
+			
+			uses: "./.github/workflows/test.yaml",
+			with: {
+				product_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}"
+			}
+		},
+		code_analysis-analyze: {
+			name: "🔬 Code Analysis: Analyze",
+			needs: ["build", "code_analysis-prepare"],
+			permissions: {
+				
+			},
+			
+			uses: "./.github/workflows/code-analysis-analyze.yaml",
+			with: {
+				target_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}",
+				preparation-javascript-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-javascript-artifact-identifier}}",
+				preparation-github_actions-artifact-identifier: "${{needs.code_analysis-prepare.outputs.preparation-github_actions-artifact-identifier}}"
+			}
 		},
 		prepare: {
 			name: "🍳 Prepare",
-			needs: "test-build",
+			needs: "build",
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {contents: "write"},
 			
@@ -36,7 +66,7 @@
 					name: "📥 Artifacts: Download",
 					
 					uses: "actions/download-artifact@v4.1.8",
-					with: {name: "${{needs.test-build.outputs.product-identifier}}"}
+					with: {name: "${{needs.build.outputs.product_artifact-identifier}}"}
 				},
 				{
 					id: "prepare-archive",

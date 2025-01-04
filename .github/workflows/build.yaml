@@ -1,20 +1,19 @@
 {
-	name: "🛠️ Test Build",
+	name: "🛠️ Build",
 	on: {
 		workflow_call: {
 			outputs: {
-				product-identifier: {
-					description: "Product identifier",
-					value: "${{jobs.build-test.outputs.product-identifier}}"
+				product_artifact-identifier: {
+					description: "Identifier of the built product artifact",
+					value: "${{jobs.build.outputs.product_artifact-identifier}}"
 				}
 			}
 		}
 	},
-	run-name: "",
 	
 	jobs: {
-		build-test: {
-			name: "🔨 Build & Test",
+		build: {
+			name: "🔨 Build",
 			permissions: {contents: "read"},
 			
 			runs-on: "ubuntu-24.04",
@@ -68,15 +67,9 @@
 					
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {name: "🔨 Build", path: "./product/"}
-				},
-				{
-					id: "test",
-					name: "🧪 Test",
-					
-					run: "npm run-script test"
 				}
 			],
-			outputs: {product-identifier: "🔨 Build"}
+			outputs: {product_artifact-identifier: "🔨 Build"}
 		}
 	}
 }

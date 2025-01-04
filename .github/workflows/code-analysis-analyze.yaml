@@ -1,0 +1,81 @@
+{
+	name: "🔬 Code Analysis: Analyze",
+	on: {
+		workflow_call: {
+			inputs: {
+				target_artifact-identifier: {
+					description: "Artifact identifier of the source code or product to analyze",
+					type: "string",
+					required: true
+				},
+				preparation-javascript-artifact-identifier: {
+					description: "Code analysis preparation artifact identifier for JavaScript and TypeScript",
+					type: "string",
+					required: true
+				},
+				preparation-github_actions-artifact-identifier: {
+					description: "Code analysis preparation artifact identifier for GitHub Actions",
+					type: "string",
+					required: true
+				}
+			}
+		}
+	},
+	
+	jobs: {
+		code_analysis-analyze: {
+			strategy: {
+				matrix: {
+					include: [
+						{
+							name: "JavaScript",
+							
+							preparation_artifact-identifier: "${{inputs.preparation-javascript-artifact-identifier}}"
+						},
+						{
+							name: "GitHub Actions",
+							
+							preparation_artifact-identifier: "${{inputs.preparation-github_actions-artifact-identifier}}"
+						}
+					]
+				},
+				fail-fast: false
+			},
+			
+			name: "🥼 Code Analysis: Analyze (${{matrix.name}})",
+			permissions: {
+				
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "source_artifact-download",
+					name: "📥 Source Artifact: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {name: "${{inputs.target_artifact-identifier}}"}
+				},
+				{
+					id: "analysis_preparation_artifact-download",
+					name: "📥 Analysis Preparation Artifact: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {name: "${{matrix.preparation_artifact-identifier}}"}
+				},
+				{
+					id: "codeql-analyze",
+					name: "🥼 CodeQL: Analyze",
+					
+					uses: "github/codeql-action/analyze@v3.28.0",
+					with: {
+						output: "./artifacts/codeql/",
+						category: "${{matrix.name}}"
+					}
+				}
+			]
+		}
+	}
+}

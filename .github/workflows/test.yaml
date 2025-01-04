@@ -1,0 +1,42 @@
+{
+	name: "🔬 Test",
+	on: {
+		workflow_call: {
+			inputs: {
+				product_artifact-identifier: {
+					description: "Identifier of the product artifact to test",
+					type: "string",
+					required: true
+				}
+			}
+		}
+	},
+	
+	jobs: {
+		test: {
+			name: "🧪 Test",
+			permissions: {
+				
+			},
+			
+			runs-on: "ubuntu-24.04",
+			timeout-minutes: 5,
+			
+			steps: [
+				{
+					id: "product_artifact-download",
+					name: "📥 Product Artifact: Download",
+					
+					uses: "actions/download-artifact@v4.1.8",
+					with: {name: "${{inputs.product_artifact-identifier}}"}
+				},
+				{
+					id: "product_artifact-test",
+					name: "🧪 Product Artifact: Test",
+					
+					run: "npm run-script test"
+				}
+			]
+		}
+	}
+}

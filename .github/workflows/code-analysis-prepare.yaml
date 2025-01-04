@@ -1,21 +1,19 @@
 {
-	name: "🔬 Code Analysis: Prepare",
+	name: "🥼 Code Analysis: Prepare",
 	on: {
-		push: {},
 		workflow_call: {
 			outputs: {
-				preparation-javascript-identifier: {
-					description: "Code analysis preparation identifier for JavaScript and TypeScript",
-					value: "${{jobs.code_analysis-prepare.outputs.preparation-javascript-identifier}}"
+				preparation-javascript-artifact-identifier: {
+					description: "Code analysis preparation artifact identifier for JavaScript and TypeScript",
+					value: "${{jobs.code_analysis-prepare.outputs.preparation-javascript-artifact-identifier}}"
 				},
-				preparation-github_actions-identifier: {
-					description: "Code analysis preparation identifier for GitHub Actions",
-					value: "${{jobs.code_analysis-prepare.outputs.preparation-github_actions-identifier}}"
+				preparation-github_actions-artifact-identifier: {
+					description: "Code analysis preparation artifact identifier for GitHub Actions",
+					value: "${{jobs.code_analysis-prepare.outputs.preparation-github_actions-artifact-identifier}}"
 				}
 			}
 		}
 	},
-	run-name: "${{github.event.head_commit.message}}: Code Analysis Preparation",
 	
 	jobs: {
 		code_analysis-prepare: {
@@ -39,7 +37,7 @@
 				fail-fast: false
 			},
 			
-			name: "🧪 Code Analysis: Prepare (${{matrix.name}})",
+			name: "🥼 Code Analysis: Prepare (${{matrix.name}})",
 			permissions: {
 				contents: "read",
 				security-events: "write"
@@ -57,8 +55,8 @@
 					with: {sparse-checkout: ".github"}
 				},
 				{
-					id: "codeql-initialize",
-					name: "📜 CodeQL: Initialize",
+					id: "codeql-prepare",
+					name: "📜 CodeQL: Prepare",
 					
 					uses: "github/codeql-action/init@v3.28.0",
 					with: {
@@ -73,16 +71,16 @@
 					}
 				},
 				{
-					id: "build-artifacts_upload",
-					name: "📤 Build: Artifacts Upload",
+					id: "codeql-product-artifact_upload",
+					name: "📤 CodeQL Product: Artifact Upload",
 					
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {name: "📜 CodeQL Setup - ${{matrix.name}}", path: "./"}
 				}
 			],
 			outputs: {
-				"preparation-javascript-identifier": "📜 CodeQL Setup - JavaScript",
-				"preparation-github_actions-identifier": "📜 CodeQL Setup - GitHub Actions"
+				"preparation-javascript-artifact-identifier": "📜 CodeQL Setup - JavaScript",
+				"preparation-github_actions-artifact-identifier": "📜 CodeQL Setup - GitHub Actions"
 			}
 		}
 	}
