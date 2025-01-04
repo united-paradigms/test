@@ -7,7 +7,7 @@
 	
 	jobs: {
 		code_analysis-prepare: {
-			name: "🧪 Code Analysis: Prepare",
+			name: "🧪 Code Analysis: Prepare (${{matrix.name}})",
 			permissions: {
 				contents: "read",
 				actions: "read",
@@ -38,6 +38,13 @@
 				fail-fast: false
 			},
 			steps: [
+				{
+					id: "setup-repository_checkout",
+					name: "🗄️ Setup: Repository Checkout",
+					
+					uses: "actions/checkout@v4.2.2",
+					with: {sparse-checkout: ".github"}
+				},
 				{
 					id: "codeql-initialize",
 					name: "📜 CodeQL: Initialize",
