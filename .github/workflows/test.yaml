@@ -31,6 +31,12 @@
 					with: {name: "${{inputs.built_project_artifact-identifier}}"}
 				},
 				{
+					run: "ls"
+				},
+				{
+					run: "cd .. && ls"
+				},
+				{
 					id: "built_project_artifact-test",
 					name: "🧪 Built Project Artifact: Test",
 					
