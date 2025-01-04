@@ -44,8 +44,6 @@
 			
 			name: "🥼 Code Analysis: Analyze (${{matrix.name}})",
 			permissions: {
-				actions: read,
-				contents: read,
 				packages: read,
 				security-events: write
 			},
@@ -67,6 +65,17 @@
 					
 					uses: "actions/download-artifact@v4.1.8",
 					with: {name: "${{matrix.preparation_artifact-identifier}}"}
+				},
+				{
+					id: "temp",
+					name: "Temp",
+					
+					uses: "actions/upload-artifact@v4.5.0",
+					with: {
+						name: "Temp",
+						path: "./",
+						if-no-files-found: "error"
+					}
 				},
 				{
 					id: "codeql-analyze",

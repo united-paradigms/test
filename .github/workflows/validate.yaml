@@ -28,9 +28,7 @@
 		test: {
 			name: "🔬 Test",
 			needs: "build",
-			permissions: {
-				
-			},
+			permissions: {},
 			
 			uses: "./.github/workflows/test.yaml",
 			with: {
@@ -41,8 +39,6 @@
 			name: "🔬 Code Analysis: Analyze",
 			needs: ["build", "code_analysis-prepare"],
 			permissions: {
-				actions: read,
-				contents: read,
 				packages: read,
 				security-events: write
 			},
@@ -87,7 +83,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						draft: true,
-						tag_name: "versions/f",
+						tag_name: "versions/fg",
 						
 						files: "Product.zip",
 						preserve_order: true,
