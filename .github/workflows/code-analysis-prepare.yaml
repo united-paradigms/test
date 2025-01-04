@@ -41,7 +41,8 @@
 			
 			name: "🧪 Code Analysis: Prepare (${{matrix.name}})",
 			permissions: {
-				contents: "read"
+				contents: "read",
+				security-events: "write"
 			},
 			
 			runs-on: "ubuntu-24.04",
