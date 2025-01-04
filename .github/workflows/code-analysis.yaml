@@ -51,7 +51,7 @@
 					with: {
 						languages: "${{matrix.language}}",
 						build-mode: "${{matrix.build-mode}}",
-						# config-file: "?"
+						config-file: "./codeql.yaml",
 						
 						dependency-caching: true,
 						debug-artifact-name: "debug",
@@ -65,6 +65,17 @@
 					uses: "github/codeql-action/analyze@v3.28.0",
 					with: {
 						output: "./artifacts/codeql/",
+						category: "${{matrix.name}}"
+					}
+				},
+				{
+					id: "sarif-upload",
+					name: "📝 SARIF: Upload",
+					if: "${{github.event_name == 'push'}}",
+					
+					uses: "github/codeql-action/upload-sarif@v3.28.0",
+					with: {
+						sarif_file: "${{steps.codeql-analyze.outputs.sarif-output}}",
 						category: "${{matrix.name}}"
 					}
 				}
