@@ -58,8 +58,8 @@
 					
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
-						draft: true,
-						tag_name: "versions/1-new",
+						# draft: true,
+						tag_name: "versions/2-new",
 						
 						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						preserve_order: true,
