@@ -31,6 +31,15 @@
 			
 			steps: [
 				{
+					id: "setup-repository_checkout",
+					name: "🗄️ Setup: Repository Checkout",
+					
+					uses: "actions/checkout@v4.2.2",
+					with: {
+						sparse-checkout: "./"
+					}
+				},
+				{
 					id: "artifacts-download",
 					name: "📥 Artifacts: Download",
 					
@@ -61,7 +70,7 @@
 					uses: "anchore/sbom-action@v0.17.9",
 					with: {
 						path: "./",
-						config: "./syft.yml",
+						config: "./syft.yaml",
 						dependency-snapshot: true
 					}
 				},
