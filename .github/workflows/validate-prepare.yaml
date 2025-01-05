@@ -136,7 +136,8 @@
 							const {versionTag} = await import(\"${{github.workspace}}/.github/scripts/version-tag.js\")\n
 							\n
 							return versionTag
-						"
+						",
+						result-encoding: "string"
 					}
 				},
 				{
