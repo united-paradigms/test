@@ -54,13 +54,13 @@
 						filename: "${{env.product-archive-directory}}${{env.product-archive-filename}}"
 					}
 				},
-				# {
-				# 	uses: "anchore/sbom-action@v0.17.9",
-				# 	with: {
-				# 		path: "./",
-				# 		config: "./.syft.yml"
-				# 	}
-				# },
+				{
+					uses: "anchore/sbom-action@v0.17.9",
+					with: {
+						path: "./",
+						config: "./.syft.yml"
+					}
+				},
 				{
 					id: "product-attest",
 					name: "🔍 Product: Attest",
