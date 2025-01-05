@@ -21,7 +21,8 @@
 			
 			name: "🍳 Prepare",
 			permissions: {
-				contents: "write"
+				contents: "write",
+				attestations: "write"
 			},
 			
 			runs-on: "ubuntu-24.04",
@@ -38,8 +39,16 @@
 					}
 				},
 				{
-					id: "build_project-archive-setup",
-					name: "📁 Build Project: Archive Setup",
+					uses: "actions/attest-build-provenance@v2.1.0",
+					with: {
+						subject-name: "Product",
+						subject-path: "./",
+						push-to-registry: true
+					}
+				},
+				{
+					id: "prepare-archive-setup",
+					name: "📁 Prepare: Archive Setup",
 					
 					run: "mkdir -p ${{env.product-archive-directory}}"
 				},
