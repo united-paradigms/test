@@ -83,8 +83,8 @@
 					uses: "anchore/sbom-action@v0.17.9",
 					with: {
 						path: "./",
-						config: "./syft.yaml",
-						dependency-snapshot: true,
+						config: "./syfft.yaml",
+						# dependency-snapshot: true,
 						
 						upload-artifact: false,
 						upload-release-assets: false

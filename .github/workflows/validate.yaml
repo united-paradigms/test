@@ -38,7 +38,7 @@
 			}
 		},
 		prepare: {
-			name: "🔬 Test",
+			name: "🔬 Prepare",
 			needs: ["build", "test", "code_analysis"],
 			if: "${{github.event_name == 'push' && github.ref_name == github.event.repository.default_branch}}",
 			permissions: {
