@@ -35,10 +35,7 @@
 					id: "setup-repository_checkout",
 					name: "🗄️ Setup: Repository Checkout",
 					
-					uses: "actions/checkout@v4.2.2",
-					with: {
-						sparse-checkout: "./"
-					}
+					uses: "actions/checkout@v4.2.2"
 				},
 				{
 					id: "artifacts-download",
@@ -110,14 +107,26 @@
 					}
 				},
 				{
+					id: "data-retrieval",
+					name: "ℹ️ Data: Retrieval",
+					
+					uses: "actions/github-script@v7.0.1",
+					with: {
+						script: "
+							const {versionTag} = await import(\"${{github.workspace}}/.github/scripts/version-tag.js\")\n
+							\n
+							return versionTag
+						"
+					}
+				},
+				{
 					id: "prepare-release",
 					name: "🔪 Prepare: Release",
-					if: "${{github.event_name == 'push'}}",
 					
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						# draft: true,
-						tag_name: "versions/4-new",
+						tag_name: "${{steps.data-retrieval.outputs.result}}",
 						
 						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						preserve_order: true,

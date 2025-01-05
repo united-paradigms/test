@@ -24,7 +24,7 @@
 	],
 	"license": "AGPL-3.0-only",
 	
-	"workspaces": ["./build/", "./tests/", "./deployment/"],
+	"workspaces": ["./build/", "./tests/", "./deployment/", "./.github/scripts/"],
 	"scripts": {
 		"build": "./scripts/build/build.sh",
 		"clean": "./scripts/build/clean.sh",

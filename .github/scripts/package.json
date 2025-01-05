@@ -1,0 +1,12 @@
+{
+	"name": "@united-paradigms/typescript-configurations.github-scripts",
+	"description": "GitHub action scripts for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"devDependencies": {
+		"read-pkg": "^9.0.1",
+		"semver": "^7.6.3"
+	}
+}
