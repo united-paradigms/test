@@ -14,7 +14,7 @@
 				contents: "read"
 			},
 			
-			uses: "./.github/workflows/build.yaml"
+			uses: "./.github/workflows/validate-build.yaml"
 		},
 		code_analysis: {
 			name: "🥼 Code Analysis",
@@ -24,14 +24,14 @@
 				security-events: "write"
 			},
 			
-			uses: "./.github/workflows/code-analysis.yaml"
+			uses: "./.github/workflows/validate-code-analysis.yaml"
 		},
 		test: {
 			name: "🔬 Test",
 			needs: "build",
 			permissions: {},
 			
-			uses: "./.github/workflows/test.yaml",
+			uses: "./.github/workflows/validate-test.yaml",
 			with: {
 				built_project_artifact-filename: "${{needs.build.outputs.built_project_artifact-filename}}",
 				built_project_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}"
@@ -48,7 +48,7 @@
 				attestations: "write"
 			},
 			
-			uses: "./.github/workflows/prepare.yaml",
+			uses: "./.github/workflows/validate-prepare.yaml",
 			with: {
 				product_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}"
 			}

@@ -112,6 +112,7 @@
 				{
 					id: "prepare-release",
 					name: "🔪 Prepare: Release",
+					if: "${{github.event_name == 'push'}}",
 					
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
