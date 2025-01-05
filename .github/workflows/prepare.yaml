@@ -23,6 +23,7 @@
 			permissions: {
 				contents: "write",
 				id-token: "write",
+				actions: "read",
 				attestations: "write"
 			},
 			
@@ -71,7 +72,10 @@
 					with: {
 						path: "./",
 						config: "./syft.yaml",
-						dependency-snapshot: true
+						dependency-snapshot: true,
+						
+						upload-artifact: false,
+						upload-release-assets: false
 					}
 				},
 				{
@@ -81,7 +85,9 @@
 					uses: "actions/attest-build-provenance@v2.1.0",
 					with: {
 						subject-name: "Product",
-						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}"
+						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						
+						show-summary: false
 					}
 				},
 				{
@@ -91,7 +97,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						# draft: true,
-						tag_name: "versions/2-new",
+						tag_name: "versions/3-new",
 						
 						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						preserve_order: true,
