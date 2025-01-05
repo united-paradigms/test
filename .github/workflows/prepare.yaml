@@ -116,7 +116,7 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						# draft: true,
-						tag_name: "versions/3-new",
+						tag_name: "versions/4-new",
 						
 						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						preserve_order: true,
@@ -124,12 +124,16 @@
 					}
 				},
 				{
-					id: "annotate-release_url",
-					name: "🗒️ Annotate: Release URL",
+					id: "results-documentation",
+					name: "🗒️ Results: Documentation",
 					
-					uses: "dkhunt27/action-annotations@v1",
+					uses: "uses: johngeorgewright/summary-action@v1.0.0",
 					with: {
-						msg: "Release URL: ${{steps.prepare-release.outputs.url}}"
+						summary: "
+							# Release URL\n
+							\n
+							${{steps.prepare-release.outputs.url}}
+						"
 					}
 				}
 			]

@@ -24,6 +24,13 @@
 1. Make feature requests and issues issue templates.
 2. Published packages aren't public???
 
+
+
+Test conditional event names in sub-workflows.
+Try restructuring workflows in sub-directories.
+
+
+
 In future:
 - Watch for `dependabot.yml` group names and commit messages.
 - CodeQL categories set right?
