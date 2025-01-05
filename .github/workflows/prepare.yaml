@@ -55,10 +55,14 @@
 					}
 				},
 				{
+					id: "product-sbom-generation",
+					name: "✨ Product SBOM: Generation",
+					
 					uses: "anchore/sbom-action@v0.17.9",
 					with: {
 						path: "./",
-						config: "./.syft.yml"
+						config: "./syft.yml",
+						dependency-snapshot: true
 					}
 				},
 				{
