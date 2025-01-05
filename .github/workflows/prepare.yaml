@@ -54,6 +54,13 @@
 						filename: "${{env.product-archive-directory}}${{env.product-archive-filename}}"
 					}
 				},
+				# {
+				# 	uses: "anchore/sbom-action@v0.17.9",
+				# 	with: {
+				# 		path: "./",
+				# 		config: "./.syft.yml"
+				# 	}
+				# },
 				{
 					id: "product-attest",
 					name: "🔍 Product: Attest",
@@ -63,6 +70,7 @@
 						# subject-name: "Product",
 						# subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						subject-path: "artifacts/validate/prepare-archive/Product.zip",
+						subject-digest: "${{hashFiles('artifacts/validate/prepare-archive/Product.zip')}}",
 						push-to-registry: true
 					}
 				},
