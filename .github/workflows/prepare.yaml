@@ -88,8 +88,8 @@
 					
 					uses: "anchore/sbom-action@v0.17.9",
 					with: {
-						# output-file: "./artifacts/syft/sbom.spdx.json",
-						config: "./syft.yaml",
+						output-file: "./artifacts/syft/sbom.spdx.json",
+						# config: "./syft.yaml",
 						# dependency-snapshot: true,
 						
 						upload-artifact: false,
