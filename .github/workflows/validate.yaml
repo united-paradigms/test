@@ -52,29 +52,6 @@
 			with: {
 				product_artifact-identifier: "${{needs.build.outputs.product_artifact-identifier}}"
 			}
-		},
-		summarize: {
-			name: "🖊️ Summarize",
-			permissions: {},
-			
-			runs-on: "ubuntu-24.04",
-			timeout-minutes: 5,
-			
-			steps: [
-				{
-					id: "results-documentation",
-					name: "🗒️ Results: Documentation",
-					
-					uses: "johngeorgewright/summary-action@v1.0.0",
-					with: {
-						summary: "
-							# Release URL\n
-							\n
-							This is not a URL.
-						"
-					}
-				}
-			]
 		}
 	}
 }

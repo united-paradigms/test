@@ -107,6 +107,26 @@
 					}
 				},
 				{
+					id: "setup-node_installation",
+					name: "🔗 Setup: Node Installation",
+					
+					uses: "actions/setup-node@v4.1.0",
+					with: {
+						node-version: "^23",
+						check-latest: true,
+						
+						registry-url: "https://registry.npmjs.org/",
+						scope: "@united-paradigms",
+						always-auth: false
+					}
+				},
+				{
+					id: "setup-dependency_installation",
+					name: "📦 Setup: Dependency Installation",
+					
+					run: "npm clean-install"
+				},
+				{
 					id: "data-retrieval",
 					name: "ℹ️ Data: Retrieval",
 					
