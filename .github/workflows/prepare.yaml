@@ -14,6 +14,11 @@
 	
 	jobs: {
 		prepare: {
+			env: {
+				product-archive-directory: "./artifacts/validate/prepare-archive/",
+				product-archive-filename: "Product.zip"
+			},
+			
 			name: "🍳 Prepare",
 			permissions: {
 				contents: "write"
@@ -36,7 +41,7 @@
 					id: "build_project-archive-setup",
 					name: "📁 Build Project: Archive Setup",
 					
-					run: "mkdir -p ./artifacts/validate/prepare-archive/"
+					run: "mkdir -p ${{env.product-archive-directory}}"
 				},
 				{
 					id: "prepare-archive",
@@ -44,7 +49,7 @@
 					
 					uses: "thedoctor0/zip-release@0.7.6",
 					with: {
-						filename: "./artifacts/validate/prepare-archive/Product.zip"
+						filename: "${{env.product-archive-directory}}${{env.product-archive-filename}}"
 					}
 				},
 				{
@@ -54,15 +59,17 @@
 					uses: "softprops/action-gh-release@v2.1.0",
 					with: {
 						draft: true,
-						tag_name: "versions/fg",
+						tag_name: "versions/1-new",
 						
-						files: "./artifacts/validate/prepare-archive/Product.zip",
+						files: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						preserve_order: true,
 						fail_on_unmatched_files: true
 					}
 				},
 				{
-					name: "Annotate",
+					id: "annotate-release_url",
+					name: "🗒️ Annotate: Release URL",
+					
 					uses: "dkhunt27/action-annotations@v1",
 					with: {
 						msg: "Release URL: ${{steps.prepare-release.outputs.url}}"

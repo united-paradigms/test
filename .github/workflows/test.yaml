@@ -3,6 +3,11 @@
 	on: {
 		workflow_call: {
 			inputs: {
+				built_project_artifact-filename: {
+					description: "File name of the built project archive",
+					type: "string",
+					required: true
+				},
 				built_project_artifact-identifier: {
 					description: "Identifier of the built project artifact to test",
 					type: "string",
@@ -37,7 +42,7 @@
 					uses: "nxtlvlsoftware/tar-ops-action@v1.0.1",
 					with: {
 						operation: "extract",
-						files: "./project-archive.tar.gz",
+						files: "./${{inputs.built_project_artifact-filename}}",
 						outPath: "./"
 					}
 				},

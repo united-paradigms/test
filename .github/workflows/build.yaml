@@ -3,6 +3,10 @@
 	on: {
 		workflow_call: {
 			outputs: {
+				built_project_artifact-filename: {
+					description: "File name of the built project archive",
+					value: "${{jobs.build.outputs.built_project-archive-filename}}"
+				},
 				built_project_artifact-identifier: {
 					description: "Identifier of the built project artifact",
 					value: "${{jobs.build.outputs.built_project_artifact-identifier}}"
@@ -18,8 +22,8 @@
 	jobs: {
 		build: {
 			env: {
-				build_project-archive-directory: "./artifacts/tar-ops-action/",
-				build_project-archive-filename: "project-archive.tar.gz",
+				built_project-archive-directory: "./artifacts/tar-ops-action/",
+				built_project-archive-filename: "project-archive.tar.gz",
 				built_project_artifact-identifier: "📦 Built Project",
 				product_artifact-identifier: "🔨 Product"
 			},
@@ -76,10 +80,10 @@
 				},
 				
 				{
-					id: "build_project-archive-setup",
+					id: "built_project-archive-setup",
 					name: "📁 Build Project: Archive Setup",
 					
-					run: "mkdir -p ${{env.build_project-archive-directory}}"
+					run: "mkdir -p ${{env.built_project-archive-directory}}"
 				},
 				{
 					id: "built_project-archive",
@@ -89,7 +93,7 @@
 					with: {
 						operation: "compress",
 						files: "./",
-						outPath: "${{env.build_project-archive-directory}}${{env.build_project-archive-filename}}"
+						outPath: "${{env.built_project-archive-directory}}${{env.built_project-archive-filename}}"
 					}
 				},
 				{
@@ -99,7 +103,7 @@
 					uses: "actions/upload-artifact@v4.5.0",
 					with: {
 						name: "${{env.built_project_artifact-identifier}}",
-						path: "${{env.build_project-archive-directory}}${{env.build_project-archive-filename}}",
+						path: "${{env.built_project-archive-directory}}${{env.built_project-archive-filename}}",
 						if-no-files-found: "error",
 						compression-level: 3
 					}
@@ -118,6 +122,7 @@
 				}
 			],
 			outputs: {
+				built_project-archive-filename: "${{env.built_project-archive-filename}}",
 				built_project_artifact-identifier: "${{env.built_project_artifact-identifier}}",
 				product_artifact-identifier: "${{env.product_artifact-identifier}}"
 			}

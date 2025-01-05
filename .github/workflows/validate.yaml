@@ -33,6 +33,7 @@
 			
 			uses: "./.github/workflows/test.yaml",
 			with: {
+				built_project_artifact-filename: "${{needs.build.outputs.built_project_artifact-filename}}",
 				built_project_artifact-identifier: "${{needs.build.outputs.built_project_artifact-identifier}}"
 			}
 		},
