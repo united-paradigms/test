@@ -127,7 +127,7 @@
 					id: "results-documentation",
 					name: "🗒️ Results: Documentation",
 					
-					uses: "uses: johngeorgewright/summary-action@v1.0.0",
+					uses: "johngeorgewright/summary-action@v1.0.0",
 					with: {
 						summary: "
 							# Release URL\n
