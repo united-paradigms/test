@@ -17,7 +17,7 @@
 2. NPM dry run script or environment integration.
 
 1. GitHub require status checks/CodeQL check for branch protection? (would require dev branch)
-2. GitHub packages and attestations?
+2. GitHub packages?
 3. Decide how to use annotations.
 4. Shift workflow to multi-job.
 

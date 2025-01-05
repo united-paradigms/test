@@ -55,9 +55,12 @@
 					}
 				},
 				{
+					id: "product-attest",
+					name: "🔍 Product: Attest",
+					
 					uses: "actions/attest-build-provenance@v2.1.0",
 					with: {
-						subject-name: "Product",
+						# subject-name: "Product",
 						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
 						push-to-registry: true
 					}
