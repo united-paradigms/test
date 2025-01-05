@@ -22,8 +22,8 @@
 			name: "🍳 Prepare",
 			permissions: {
 				contents: "write",
-				id-token: "write",
 				actions: "read",
+				id-token: "write",
 				attestations: "write"
 			},
 			
@@ -65,6 +65,18 @@
 					}
 				},
 				{
+					id: "product-attestation",
+					name: "🔍 Product: Attestation",
+					
+					uses: "actions/attest-build-provenance@v2.1.0",
+					with: {
+						subject-name: "Product",
+						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						
+						show-summary: false
+					}
+				},
+				{
 					id: "product-sbom-generation",
 					name: "✨ Product SBOM: Generation",
 					
@@ -79,13 +91,14 @@
 					}
 				},
 				{
-					id: "product-attest",
-					name: "🔍 Product: Attest",
+					id: "product-sbom-attestation",
+					name: "🔍 Product SBOM: Attestation",
 					
-					uses: "actions/attest-build-provenance@v2.1.0",
+					uses: "actions/attest-sbom@v2.1.0",
 					with: {
 						subject-name: "Product",
 						subject-path: "${{env.product-archive-directory}}${{env.product-archive-filename}}",
+						sbom-path: "./artifacts/syft/sbom.spdx.json",
 						
 						show-summary: false
 					}
