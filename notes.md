@@ -5,13 +5,11 @@
 5. Link template TS configuration files to `build` and `test`.
 6. Gulp CWDs and base paths
 7. Move markdown utilities to new package? What about version utilities? Or standard build scripts?
-8. Minimize markdown in builds.
-9. Improve watch behavior.
-10. Maybe add other documentation files to build output?
+8. Maybe add other documentation files to build output?
+9. Improve watch behavior to cover all files.
 
-1. Create project readme and license (and update package.json license!).
+1. Create project readme and license (and update package.json license!) and other docs files. Update contributing file with branch rulesets info.
 2. Graphics
-3. Update contributing file with branch rulesets info.
 
 1. Git hooks? Validate new commit message scheme. Perhaps run tests before allowing merges.
 

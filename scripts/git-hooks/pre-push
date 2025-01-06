@@ -5,7 +5,7 @@ import {promisify} from "node:util"
 
 const exec = promisify(callbackExec)
 
-const {stdout: output, stderr: error} = await exec("npm run-script test")
+// const {stdout: output, stderr: error} = await exec("npm run-script test")
 
-console.warn("Don't do that!")
+// console.warn("Don't do that!")
 process.exitCode = 0

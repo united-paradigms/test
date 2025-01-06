@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+import {argv} from "node:process"
+import {readFile} from "node:fs/promises"
+
+const x = await readFile(argv.at(-1), {encoding: "utf-8"})
+console.error(x)
+process.exitCode = 1
