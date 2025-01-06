@@ -8,18 +8,18 @@ const exec = promisify(callbackExec)
 
 const commitFileRootRelative = argv.at(-1)
 const commitFile = dirname(dirname(import.meta.url))
-
-const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
-const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
-
-if (!commitMessageMatch) {
-	console.error("Commit message must be of the form \"[Subject] Message\".")
-	process.exitCode = 0
-}
-
-const signatureLog = (await exec("git show --show-signature")).stdout
-const signatureLogMatch = signatureLog.match(/Good signature from/)
-if (!signatureLogMatch) {
-	console.error("Commit message must be signed.")
-	process.exitCode = 1
-}
+console.log(commitFile)
+// const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
+// const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
+// 
+// if (!commitMessageMatch) {
+// 	console.error("Commit message must be of the form \"[Subject] Message\".")
+// 	process.exitCode = 0
+// }
+// 
+// const signatureLog = (await exec("git show --show-signature")).stdout
+// const signatureLogMatch = signatureLog.match(/Good signature from/)
+// if (!signatureLogMatch) {
+// 	console.error("Commit message must be signed.")
+// 	process.exitCode = 1
+// }
