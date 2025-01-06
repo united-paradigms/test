@@ -1,22 +1,25 @@
 import {readFile} from "node:fs/promises"
 import {argv} from "node:process"
-
 import {exec as callbackExec} from "node:child_process"
+import {dirname, join as joinPaths} from "node:path"
 import {promisify} from "node:util"
-console.warn(import.meta.url)
+
 const exec = promisify(callbackExec)
 
-// const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
-// const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
+const commitFileRootRelative = argv.at(-1)
+const commitFile = dirname(dirname(import.meta.url))
 
-// if (!commitMessageMatch) {
-	// console.error("Commit message must be of the form \"[Subject] Message\".")
-// 	process.exitCode = 0
-// }
-// 
-// const signatureLog = (await exec("git show --show-signature")).stdout
-// const signatureLogMatch = signatureLog.match(/Good signature from/)
-// if (!signatureLogMatch) {
-// 	console.error("Commit message must be signed.")
-// 	process.exitCode = 1
-// }
+const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
+const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
+
+if (!commitMessageMatch) {
+	console.error("Commit message must be of the form \"[Subject] Message\".")
+	process.exitCode = 0
+}
+
+const signatureLog = (await exec("git show --show-signature")).stdout
+const signatureLogMatch = signatureLog.match(/Good signature from/)
+if (!signatureLogMatch) {
+	console.error("Commit message must be signed.")
+	process.exitCode = 1
+}
