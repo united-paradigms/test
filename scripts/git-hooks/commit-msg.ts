@@ -3,11 +3,11 @@ import {argv} from "node:process"
 
 import {exec as callbackExec} from "node:child_process"
 import {promisify} from "node:util"
-
+console.warn(import.meta.url)
 const exec = promisify(callbackExec)
 
-const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
-const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
+// const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
+// const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
 
 // if (!commitMessageMatch) {
 	// console.error("Commit message must be of the form \"[Subject] Message\".")
