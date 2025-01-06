@@ -1,7 +1,6 @@
 #!/bin/bash
-echo $1
 cd ./scripts/git-hooks/ \
 && node \
 	--loader="ts-node/esm" \
 	--no-warnings="ExperimentalWarning" \
-	"./commit-msg.ts"
+	"./commit-msg.ts" $1

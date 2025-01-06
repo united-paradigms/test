@@ -24,5 +24,5 @@ console.log(commitFileRootRelative)
 // const signatureLogMatch = signatureLog.match(/Good signature from/)
 // if (!signatureLogMatch) {
 // 	console.error("Commit message must be signed.")
-// 	process.exitCode = 1
+	process.exitCode = 1
 // }
