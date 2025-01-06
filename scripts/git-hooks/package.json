@@ -1,0 +1,12 @@
+{
+	"name": "@united-paradigms/typescript-configurations.git-hooks",
+	"description": "Shared data for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"devDependencies": {
+		"typescript": "^5.7.2",
+		"ts-node": "^10.9.2"
+	}
+}

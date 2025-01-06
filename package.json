@@ -29,6 +29,7 @@
 		"./tests/",
 		"./deployment/",
 		"./$shared/",
+		"./scripts/git-hooks/",
 		"./.github/scripts/"
 	],
 	"scripts": {
