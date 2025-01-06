@@ -7,7 +7,7 @@ import {promisify} from "node:util"
 const exec = promisify(callbackExec)
 
 const commitFileRootRelative = argv.at(-1)
-const commitFile = dirname(dirname(import.meta.url)) 
+const commitFile = dirname(dirname(import.meta.dirname)) 
 console.log(commitFile)
 // const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
 // const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
