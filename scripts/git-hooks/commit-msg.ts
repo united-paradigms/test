@@ -8,8 +8,13 @@ const exec = promisify(callbackExec)
 
 const commitFileRootRelative = argv.at(-1)
 const commitFile = joinPaths(dirname(dirname(import.meta.dirname)), commitFileRootRelative)
-const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
-console.log(commitMessage)
+// console.log("now: ", commitFile)
+try {
+	// const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
+} catch (error) {
+	console.warn("error: ", error)
+}
+// console.log(commitMessage)
 // const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
 // 
 // if (!commitMessageMatch) {
@@ -21,5 +26,5 @@ console.log(commitMessage)
 // const signatureLogMatch = signatureLog.match(/Good signature from/)
 // if (!signatureLogMatch) {
 // 	console.error("Commit message must be signed.")
-// 	process.exitCode = 1
+	// process.exitCode = 1
 // }
