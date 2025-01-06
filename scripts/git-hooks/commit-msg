@@ -1,4 +1,5 @@
 #!/bin/bash
+echo $1
 cd ./scripts/git-hooks/ \
 && node \
 	--loader="ts-node/esm" \
