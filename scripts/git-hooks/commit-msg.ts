@@ -4,7 +4,7 @@ import {exec as callbackExec} from "node:child_process"
 import {dirname, join as joinPaths} from "node:path"
 import {promisify} from "node:util"
 
-const exec = promisify(callbackExec)
+const exec = promisify(callbackExec) 
 
 const commitFileRootRelative = argv.at(-1)
 const commitFile = joinPaths(dirname(dirname(import.meta.dirname)), commitFileRootRelative)
