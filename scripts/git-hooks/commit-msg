@@ -2,9 +2,10 @@
 import {argv} from "node:process"
 import {readFile} from "node:fs/promises"
 
-const x = await readFile(argv.at(-1), {encoding: "utf-8"})
-// console.error(x)
-console.error(
-	x.match(/\[[^\]]+\]/) != null
-)
-process.exitCode = 1
+const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
+const match = commitMessage.match(/^\[[^\]]+\] \S+/)
+
+if (!match) {
+	console.error("Commit message must be of the form [Subject] Message.")
+	process.exitCode = 1
+}
