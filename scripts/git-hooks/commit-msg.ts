@@ -6,12 +6,12 @@ import {promisify} from "node:util"
 
 const exec = promisify(callbackExec)
 
-// const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
-// const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
-// 
+const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
+const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
+
 // if (!commitMessageMatch) {
-// 	console.error("Commit message must be of the form \"[Subject] Message\".")
-// 	process.exitCode = 1
+	// console.error("Commit message must be of the form \"[Subject] Message\".")
+// 	process.exitCode = 0
 // }
 // 
 // const signatureLog = (await exec("git show --show-signature")).stdout
