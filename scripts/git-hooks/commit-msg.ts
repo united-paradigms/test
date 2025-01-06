@@ -1,12 +1,11 @@
-2
-// import {readFile} from "node:fs/promises"
-// import {argv} from "node:process"
-// 
-// import {exec as callbackExec} from "node:child_process"
-// import {promisify} from "node:util"
-// 
-// const exec = promisify(callbackExec)
-// 
+import {readFile} from "node:fs/promises"
+import {argv} from "node:process"
+
+import {exec as callbackExec} from "node:child_process"
+import {promisify} from "node:util"
+
+const exec = promisify(callbackExec)
+
 // const commitMessage = await readFile(argv.at(-1), {encoding: "utf-8"})
 // const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
 // 
