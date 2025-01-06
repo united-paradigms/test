@@ -7,20 +7,27 @@
 	"type": "module",
 	"devDependencies": {
 		"gulp": "^5.0.0",
+		"@types/gulp": "^4.0.17",
 		"del": "^8.0.0",
 		"gulp-json-editor": "^2.6.0",
+		"@types/gulp-json-editor": "^2.2.36",
 		"gulp-jsonminify": "^1.1.0",
+		"@types/gulp-jsonminify": "^1.0.3",
 		"gulp-tar": "^4.0.0",
 		"@types/gulp-tar": "^4.0.0",
 		"gulp-gzip": "^1.4.2",
 		"@types/gulp-gzip": "^0.0.36",
 		"gulplog": "^2.2.0",
 		"chalk": "^5.4.1",
+		"@united-paradigms/typescript-configurations.shared": "../$shared/",
 		
 		"typescript": "^5.7.2",
 		"ts-node": "^10.9.2",
-		"@types/gulp": "^4.0.17",
-		"@types/gulp-json-editor": "^2.2.36",
-		"@types/gulp-jsonminify": "^1.0.3"
+		"type-fest": "^4.31.0"
+	},
+	"imports": {
+		"#clean": "./clean.ts",
+		"#build": "./build.ts",
+		"#watch": "./watch.ts"
 	}
 }

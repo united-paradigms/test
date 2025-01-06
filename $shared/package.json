@@ -1,0 +1,15 @@
+{
+	"name": "@united-paradigms/typescript-configurations.shared",
+	"description": "Shared data for @united-paradigms/typescript-configurations",
+	"version": "0.0.8",
+	"private": true,
+	
+	"type": "module",
+	"exports": {
+		".": "./main.ts"
+	},
+	"imports": {
+		"#project-structure": "./project-structure.ts",
+		"#watch-events": "./watch-events.ts"
+	}
+}

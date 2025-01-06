@@ -1,26 +1,24 @@
 import {src, dest, series} from "gulp"
-import {clean} from "./clean.ts"
+import {cleanAll} from "#clean"
 import jsonEditor from "gulp-json-editor"
 import jsonMinify from "gulp-jsonminify"
+import {join} from "node:path"
+import {ProjectPaths} from "@united-paradigms/typescript-configurations.shared"
+import {JsonObject} from "type-fest"
+import {projectRootPath} from "../$shared/project-structure.ts"
 
-export function buildGlob(glob: string) {
-	return src(
-		glob,
-		{"base": "../source/"}
-	)
+export function buildJsonGlob(glob: string) {
+	return src(glob)
 		.pipe(jsonMinify())
-		.pipe(dest("../product/"))
+		.pipe(dest(ProjectPaths.product))
 }
 
 export async function build() {
-	buildGlob("../source/**/*.json")
+	buildJsonGlob(join(ProjectPaths.source, "**", "*.json"))
 	
-	src(
-		"../package.json",
-		{allowEmpty: true}
-	)
+	src(ProjectPaths.package)
 		.pipe(jsonEditor(
-			(json: Record<string, unknown>) => {
+			(json: JsonObject) => {
 				delete json.workspaces
 				delete json.scripts
 				
@@ -28,28 +26,28 @@ export async function build() {
 			}
 		))
 		.pipe(jsonMinify())
-		.pipe(dest("../product/"))
+		.pipe(dest(ProjectPaths.product))
 	
-	src("../license.md",)
-		.pipe(dest("../product/"))
+	src([
+		ProjectPaths.readme,
+		ProjectPaths.license
+	])
+		.pipe(dest(ProjectPaths.product))
 	
 	src(
 		[
-			"../docs/readme.md",
-			"../docs/authors.md",
-			"../docs/contributors.md",
-			"../docs/acknowledgments.md"
+			ProjectPaths.changelog,
+			ProjectPaths.authors,
+			ProjectPaths.contributors,
+			ProjectPaths.acknowledgments
 		],
-		{
-			allowEmpty: true,
-			"base": "../docs/"
-		}
+		{base: projectRootPath}
 	)
-		.pipe(dest("../product/"))
+		.pipe(dest(ProjectPaths.product))
 }
 build.displayName = "Build"
 build.description = "Builds the source code"
 
-export const cleanBuild = series(clean, build)
-cleanBuild.displayName = "Clean Build"
-cleanBuild.description = "Builds the source code in a cleaned product directory"
+export const buildClean = series(cleanAll, build)
+buildClean.displayName = "Build: Clean"
+buildClean.description = "Builds the source code in a cleaned product directory with a cleaned artifacts directory"

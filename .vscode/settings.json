@@ -4,9 +4,10 @@
 		"build/": true,
 		"tests/": true,
 		"product/": true,
-		"artifacts/": true,
 		"deployment/": true,
+		"$shared/": true,
 		"scripts/": true,
+		"artifacts/": true,
 		"docs/": true
 	}
 }

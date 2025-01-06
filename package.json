@@ -2,7 +2,7 @@
 	"name": "@united-paradigms/jkfgorwjfoiewjfewoi",
 	"description": "Structured library of TypeScript configuration templates and partials",
 	"keywords": ["TypeScript", "configuration", "tsconfig", "config", "templates", "partials"],
-	"version": "0.0.12",
+	"version": "0.0.13",
 	
 	"homepage": "https://github.com/united-paradigms/test/",
 	"repository": {
@@ -24,23 +24,31 @@
 	],
 	"license": "AGPL-3.0-only",
 	
-	"workspaces": ["./build/", "./tests/", "./deployment/", "./.github/scripts/"],
+	"workspaces": [
+		"./build/",
+		"./tests/",
+		"./deployment/",
+		"./$shared/",
+		"./.github/scripts/"
+	],
 	"scripts": {
-		"build": "./scripts/build/build.sh",
-		"clean": "./scripts/build/clean.sh",
-		"clean-build": "./scripts/build/clean-build.sh",
-		"project-archive": "./scripts/build/project-archive.sh",
-		"watch": "./scripts/build/watch.sh",
-		"clean-watch": "./scripts/build/clean-watch.sh",
+		"clean-product": "./scripts/build/clean/product.sh",
+		"clean-artifacts": "./scripts/build/clean/artifacts.sh",
+		"clean-all": "./scripts/build/clean/all.sh",
+		"build": "./scripts/build/build/main.sh",
+		"build-clean": "./scripts/build/build/clean.sh",
+		"watch": "./scripts/build/watch/main.sh",
+		"clean-watch": "./scripts/build/watch/clean.sh",
+		
+		"pretest": "npm run-script build-clean",
+		"test": "./scripts/tests/test.sh",
+		
+		"predry-run": "npm run-script test",
+		"dry-run": "./scripts/deploy/dry-run.sh",
 		
 		"git-hooks-register": "./scripts/utilities/git-hooks-register.sh",
 		
-		"preinstall": "npm run-script git-hooks-register",
-		
-		"pretest": "npm run-script clean-build",
-		"test": "./scripts/tests/test.sh",
-		
-		"package-version-shorthand": "./scripts/deployment/package-version-shorthand.sh"
+		"preinstall": "npm run-script git-hooks-register"
 	},
 	"exports": {
 		".": "./main.d.ts",

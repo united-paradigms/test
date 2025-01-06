@@ -11,5 +11,8 @@
 		
 		"ts-node": "^10.9.2",
 		"@types/gulp": "^4.0.17"
+	},
+	"imports": {
+		"#test": "./test/main.ts"
 	}
 }

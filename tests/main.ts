@@ -1,1 +1,1 @@
-export {test} from "./test/main.ts"
+export {test} from "#test"

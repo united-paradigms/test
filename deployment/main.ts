@@ -1,1 +1,1 @@
-export {packageVersionShorthand} from "./package-version-shorthand.ts"
+// export {packageVersionShorthand} from "./package-version-shorthand.ts"

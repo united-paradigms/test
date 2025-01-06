@@ -104,8 +104,7 @@
 					with: {
 						name: "${{env.built_project_artifact-identifier}}",
 						path: "${{env.built_project-archive-directory}}${{env.built_project-archive-filename}}",
-						if-no-files-found: "error",
-						compression-level: 3
+						if-no-files-found: "error"
 					}
 				},
 				{
@@ -116,8 +115,7 @@
 					with: {
 						name: "${{env.product_artifact-identifier}}",
 						path: "./product/",
-						if-no-files-found: "error",
-						compression-level: 3
+						if-no-files-found: "error"
 					}
 				}
 			],

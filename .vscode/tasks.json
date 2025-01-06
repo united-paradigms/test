@@ -1,12 +1,15 @@
 {
 	"version": "2.0.0",
 	"tasks": [
+		{"type": "npm", "script": "clean-product", "hide": true},
+		{"type": "npm", "script": "clean-artifacts", "hide": true},
+		{"type": "npm", "script": "clean-all", "hide": true},
 		{"type": "npm", "script": "build", "hide": true},
-		{"type": "npm", "script": "clean", "hide": true},
-		{"type": "npm", "script": "clean-build", "hide": true},
+		{"type": "npm", "script": "build-clean", "hide": true},
 		{"type": "npm", "script": "watch", "hide": true},
-		{"type": "npm", "script": "clean-watch", "hide": true},
+		{"type": "npm", "script": "watch-clean", "hide": true},
 		{"type": "npm", "script": "test", "hide": true},
+		{"type": "npm", "script": "dry-run", "hide": true},
 		{"type": "npm", "script": "git-hooks-register", "hide": true}
 	]
 }

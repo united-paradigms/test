@@ -4,9 +4,10 @@
 		{"path": "./build/", "name": "Build"},
 		{"path": "./tests/", "name": "Tests"},
 		{"path": "./product/", "name": "Product"},
-		{"path": "./artifacts/", "name": "Artifacts"},
 		{"path": "./deployment/", "name": "Deployment"},
+		{"path": "./$shared/", "name": "Shared"},
 		{"path": "./scripts/", "name": "Scripts"},
+		{"path": "./artifacts/", "name": "Artifacts"},
 		{"path": "./docs/", "name": "Documentation"},
 		{"path": "./", "name": "Project"}
 	],
@@ -21,33 +22,78 @@
 		"json.schemaDownload.enable": true,
 		"json.schemas": [
 			{
-				"fileMatch": ["source/**/*.json"],
+				"fileMatch": [
+					"source/**/*.json",
+					"tests/test/$assets/**/*.json",
+					"product/**/*.json"
+				],
 				"url": "https://json.schemastore.org/tsconfig"
 			}
 		],
 
 		"npm.scriptExplorerExclude": [
 			"preinstall",
-			"pretest"
-		],
-		"github-actions.workflows.pinned.workflows": [
-			"Project/.github/workflows/build-test.yml",
-			"Project/.github/workflows/publish.yml"
+			"pretest",
+			"predry-run"
 		]
 	},
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "Clean",
+				"label": "Clean: Product",
 				"detail": "Removes everything inside the product directory",
 				"group": "build",
-				"icon": {"id": "trash"},
-				
+				"icon": {
+					"id": "trash"
+				},
 				"type": "shell",
-				"command": "./scripts/build/clean.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"command": "./scripts/build/clean/product.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Clean: Artifacts",
+				"detail": "Removes everything inside the artifacts directory",
+				"group": "build",
+				"icon": {
+					"id": "trash"
+				},
+				"type": "shell",
+				"command": "./scripts/build/clean/artifacts.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Clean: All",
+				"detail": "Removes everything inside the product and artifacts directories",
+				"group": "build",
+				"icon": {
+					"id": "trash"
+				},
+				"type": "shell",
+				"command": "./scripts/build/clean/all.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -60,13 +106,18 @@
 			{
 				"label": "Build",
 				"detail": "Builds the source code",
-				"group": {"kind": "build", "isDefault": true},
-				"icon": {"id": "tools"},
-				
+				"group": {
+					"kind": "build",
+					"isDefault": true
+				},
+				"icon": {
+					"id": "tools"
+				},
 				"type": "shell",
-				"command": "./scripts/build/build.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"command": "./scripts/build/build/main.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -77,15 +128,17 @@
 				"problemMatcher": []
 			},
 			{
-				"label": "Clean Build",
-				"detail": "Builds the source code in a cleaned product directory",
+				"label": "Build: Clean",
+				"detail": "Builds the source code in a cleaned product directory with a cleaned artifacts directory",
 				"group": "build",
-				"icon": {"id": "refresh"},
-				
+				"icon": {
+					"id": "tools"
+				},
 				"type": "shell",
-				"command": "./scripts/build/clean-build.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"command": "./scripts/build/build/clean.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -99,12 +152,14 @@
 				"label": "Watch",
 				"detail": "Builds changes to source files as they happen",
 				"group": "build",
-				"icon": {"id": "eye"},
-				
+				"icon": {
+					"id": "eye"
+				},
 				"type": "shell",
 				"command": "./scripts/build/watch.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -115,15 +170,17 @@
 				"problemMatcher": []
 			},
 			{
-				"label": "Clean Watch",
+				"label": "Watch: Clean",
 				"detail": "Builds changes to source files as they happen after performing a clean build",
 				"group": "build",
-				"icon": {"id": "eye"},
-				
+				"icon": {
+					"id": "eye"
+				},
 				"type": "shell",
-				"command": "./scripts/build/clean-watch.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"command": "./scripts/build/watch/clean.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -131,20 +188,49 @@
 					"clear": true,
 					"showReuseMessage": false
 				},
-				"runOptions": {"runOn": "folderOpen"},
+				"runOptions": {
+					"runOn": "folderOpen"
+				},
 				"problemMatcher": []
 			},
 			{
 				"label": "Test",
 				"detail": "Tests the build product",
-				"group": {"kind": "test", "isDefault": true},
-				"icon": {"id": "pass"},
-				
+				"group": {
+					"kind": "test",
+					"isDefault": true
+				},
+				"icon": {
+					"id": "pass"
+				},
 				"type": "shell",
 				"command": "./scripts/tests/test.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"dependsOn": "Clean Build",
+				"isBackground": false,
+				"presentation": {
+					"panel": "dedicated",
+					"revealProblems": "onProblem",
+					"clear": true,
+					"showReuseMessage": false
+				},
+				"problemMatcher": []
+			},
+			{
+				"label": "Dry Run",
+				"detail": "Mocks release of the product",
+				"group": "none",
+				"icon": {
+					"id": "cloud-upload"
+				},
+				"type": "shell",
+				"command": "./scripts/deploy/dry-run.sh",
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
+				"dependsOn": "Test",
 				"isBackground": false,
 				"presentation": {
 					"panel": "dedicated",
@@ -158,11 +244,14 @@
 				"label": "Register Git Hooks",
 				"detail": "Registers git hooks to the client configuration",
 				"group": "none",
-				"icon": {"id": "references"},
+				"icon": {
+					"id": "references"
+				},
 				"type": "shell",
 				"command": "./scripts/utilities/git-hooks-register.sh",
-				"options": {"cwd": "${workspaceFolder:Project}"},
-				
+				"options": {
+					"cwd": "${workspaceFolder:Project}"
+				},
 				"isBackground": false,
 				"presentation": {
 					"reveal": "silent",
@@ -171,7 +260,9 @@
 					"clear": true,
 					"showReuseMessage": false
 				},
-				"runOptions": {"runOn": "folderOpen"},
+				"runOptions": {
+					"runOn": "folderOpen"
+				},
 				"problemMatcher": []
 			}
 		]
