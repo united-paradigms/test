@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node --experimental-strip-types
 import {readFile} from "node:fs/promises"
 import {argv} from "node:process"
 

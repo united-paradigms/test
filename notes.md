@@ -11,7 +11,7 @@
 1. Create project readme and license (and update package.json license!) and other docs files. Update contributing file with branch rulesets info.
 2. Graphics
 
-1. Git hooks? Validate new commit message scheme. Perhaps run tests before allowing merges.
+1. Git hooks: run tests before allowing merges?
 
 1. GitHub require status checks/CodeQL check for branch protection? (would require dev branch)
 2. GitHub packages?
