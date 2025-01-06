@@ -8,6 +8,7 @@ const exec = promisify(callbackExec)
 
 const commitFileRootRelative = argv.at(-1)
 const commitFile = joinPaths(dirname(dirname(import.meta.dirname)), commitFileRootRelative)
+console.log(commitFileRootRelative)
 console.log(commitFile)
 // const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
 // const commitMessageMatch = commitMessage.match(/^\[[^\]]+\] \S+/)
