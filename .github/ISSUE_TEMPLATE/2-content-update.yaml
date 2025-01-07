@@ -1,7 +1,7 @@
 {
 	name: "🖊️ Content Update",
 	description: "Request the updating of template or partial contents.",
-	assignees: "@united-paradigms/devops",
+	assignees: ["ciosciaa"],
 	labels: "Feature Request",
 	
 	body: [
@@ -9,7 +9,7 @@
 			type: "markdown",
 			attributes: {
 				value: "
-					Request updates for a template(s) or partial(s) here.\n
+					Request updates for template(s) or partial(s) *contents* here.\n
 					\n
 					For *support*, create a new discussion instead. To note a bug, use that issue template instead.
 				"
@@ -31,7 +31,7 @@
 			attributes: {
 				label: "Justification",
 				description: "Justify why the specified contents should be updated.",
-				placeholder: "TypeScript has updated `target` for new downleveling behavior."
+				placeholder: "TypeScript has updated `target` with new downleveling behavior."
 			},
 			validations: {required: true}
 		}

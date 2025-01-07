@@ -1,7 +1,7 @@
 {
 	name: "🐛 Bug Report",
 	description: "File an issue concerning an existing template or partial.",
-	assignees: "@united-paradigms/devops",
+	assignees: ["ciosciaa"],
 	labels: "Bug",
 	
 	body: [
