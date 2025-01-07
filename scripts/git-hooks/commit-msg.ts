@@ -10,7 +10,7 @@ const commitFileRootRelative = argv.at(-1)
 const commitFile = joinPaths(dirname(dirname(import.meta.dirname)), commitFileRootRelative)
 // console.log("now: ", commitFile)
 try {
-	// const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
+	const commitMessage = await readFile(commitFile, {encoding: "utf-8"})
 } catch (error) {
 	console.warn("error: ", error)
 }
