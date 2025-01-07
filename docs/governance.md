@@ -1,0 +1,1 @@
+This project is exclusively governed by @united-paradigms/devops.

@@ -11,32 +11,6 @@
 		{"path": "./docs/", "name": "Documentation"},
 		{"path": "./", "name": "Project"}
 	],
-	"settings": {
-		"files.encoding": "utf8",
-		"editor.insertSpaces": false,
-		"files.eol": "\n",
-		"files.trimTrailingWhitespace": false,
-		"files.insertFinalNewline": false,
-		
-		"json.validate.enable": true,
-		"json.schemaDownload.enable": true,
-		"json.schemas": [
-			{
-				"fileMatch": [
-					"source/**/*.json",
-					"tests/test/$assets/**/*.json",
-					"product/**/*.json"
-				],
-				"url": "https://json.schemastore.org/tsconfig"
-			}
-		],
-
-		"npm.scriptExplorerExclude": [
-			"preinstall",
-			"pretest",
-			"predry-run"
-		]
-	},
 	"tasks": {
 		"version": "2.0.0",
 		"tasks": [
@@ -265,6 +239,38 @@
 				},
 				"problemMatcher": []
 			}
+		]
+	},
+	
+	"settings": {
+		"files.encoding": "utf8",
+		"editor.insertSpaces": false,
+		"files.eol": "\n",
+		"files.trimTrailingWhitespace": false,
+		"files.insertFinalNewline": false,
+		
+		"json.validate.enable": true,
+		"json.schemaDownload.enable": true,
+		"json.schemas": [
+			{
+				"fileMatch": [
+					"source/**/*.json",
+					"tests/test/$assets/**/*.json",
+					"product/**/*.json"
+				],
+				"url": "https://json.schemastore.org/tsconfig"
+			}
+		],
+
+		"npm.scriptExplorerExclude": [
+			"preinstall",
+			"pretest",
+			"predry-run"
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"github.vscode-github-actions"
 		]
 	}
 }

@@ -10,6 +10,7 @@
 
 1. Create project readme and license (and update package.json license!) and other docs files. Update contributing file with branch rulesets info.
 2. Graphics
+3. Recommended extensions
 
 1. Git hooks: run tests before allowing merges?
 
