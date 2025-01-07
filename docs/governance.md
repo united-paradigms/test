@@ -1,1 +1,1 @@
-This project is exclusively governed by @united-paradigms/devops.
+This project is governed in its entirety by [@united-paradigms/devops](https://github.com/orgs/united-paradigms/teams/devops).

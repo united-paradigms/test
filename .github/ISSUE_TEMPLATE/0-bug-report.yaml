@@ -1,0 +1,39 @@
+{
+  name: "🐛 Bug Report",
+  description: "File an issue concerning an existing template or partial.",
+  assignees: "@united-paradigms/devops",
+  labels: "Issue",
+  
+  body: [
+    {
+      type: "markdown",
+      attributes: {
+        value: "
+          Submit a bug report here.\n
+          \n
+          For *support*, create a new discussion instead. To request a new feature, use that issue template instead.
+        "
+      }
+    },
+    {
+      type: "input",
+      id: "files",
+      attributes: {
+        label: "Files",
+        description: "Specify the template(s) and/or partial(s) causing problems.",
+        placeholder: "templates/browser/library/development.json"
+      },
+      validations: {required: true}
+    },
+    {
+      type: "textarea",
+      id: "description",
+      attributes: {
+        label: "Description",
+        description: "Describe the issue with the noted files.",
+        placeholder: "A compiler option has been deprecated."
+      },
+      validations: {required: true}
+    }
+  ]
+}
