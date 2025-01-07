@@ -12,7 +12,7 @@
 					# Usage\n
 					Submit a bug report here.\n
 					\n
-					For *support*, create a new discussion instead. To request a new feature, use that issue template instead.\n
+					For *support* on how to use templates and partials, create a new discussion instead. If desiring a new template or partial, file a [request for such](https://github.com/united-paradigms/test/issues/new?template=1-file-request.yaml) instead. If desiring content updates to templates and partials, file a [request for such](https://github.com/united-paradigms/test/issues/new?template=2-content-update.yaml) instead.\n
 					\n
 					# Form
 				"

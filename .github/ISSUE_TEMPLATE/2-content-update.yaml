@@ -12,7 +12,7 @@
           # Usage\n
 					Request updates for template(s) or partial(s) *contents* here.\n
 					\n
-					For *support*, create a new discussion instead. To note a bug, use that issue template instead.\n
+					For *support* on understanding contents, create a new discussion instead. To bring attention to a bug with template contents, file a [bug report](https://github.com/united-paradigms/test/issues/new?template=0-bug-report.yaml) instead. If desiring a new template or partial, file a [request for such](https://github.com/united-paradigms/test/issues/new?template=1-file-request.yaml) instead.\n
 					\n
 					# Form
 				"

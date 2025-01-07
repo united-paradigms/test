@@ -1,5 +1,5 @@
 {
-	name: "📄 Template/Partial Request",
+	name: "📄 File Request",
 	description: "Request a new template or partial.",
 	assignees: ["ciosciaa"],
 	labels: "Feature Request",
@@ -12,7 +12,7 @@
 					# Usage\n
 					Request a new template or partial here.\n
 					\n
-					For *support*, create a new discussion instead. To note a bug, use that issue template instead.\n
+					For *support* on template or partial organization, create a new discussion instead. To bring attention to a bug with an existing template or partial, file a [bug report](https://github.com/united-paradigms/test/issues/new?template=0-bug-report.yaml) instead. If desiring content updates to templates and partials, file a [request for such](https://github.com/united-paradigms/test/issues/new?template=2-content-update.yaml) instead.\n
 					\n
 					# Form
 				"
