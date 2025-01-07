@@ -1,0 +1,39 @@
+{
+	name: "📄 Template/Partial Request",
+	description: "Request a new template or partial.",
+	assignees: "@united-paradigms/devops",
+	labels: "Feature Request",
+	
+	body: [
+		{
+			type: "markdown",
+			attributes: {
+				value: "
+					Request a new template or partial here.\n
+					\n
+					For *support*, create a new discussion instead. To note a bug, use that issue template instead.
+				"
+			}
+		},
+		{
+			type: "textarea",
+			id: "files",
+			attributes: {
+				label: "Files",
+				description: "Specify the template(s) and/or partial(s) that should be created.",
+				placeholder: "templates/deno"
+			},
+			validations: {required: true}
+		},
+		{
+			type: "textarea",
+			id: "justification",
+			attributes: {
+				label: "Justification",
+				description: "Justify why the specified files should be added.",
+				placeholder: "Deno is an increasingly used ecosystem that has different needs than Node."
+			},
+			validations: {required: true}
+		}
+	]
+}

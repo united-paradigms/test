@@ -1,0 +1,39 @@
+{
+	name: "🖊️ Content Update",
+	description: "Request the updating of template or partial contents.",
+	assignees: "@united-paradigms/devops",
+	labels: "Feature Request",
+	
+	body: [
+		{
+			type: "markdown",
+			attributes: {
+				value: "
+					Request updates for a template(s) or partial(s) here.\n
+					\n
+					For *support*, create a new discussion instead. To note a bug, use that issue template instead.
+				"
+			}
+		},
+		{
+			type: "textarea",
+			id: "contents",
+			attributes: {
+				label: "Contents",
+				description: "Specify which file contents should be updated.",
+				placeholder: "`target` properties for stable targets"
+			},
+			validations: {required: true}
+		},
+		{
+			type: "textarea",
+			id: "justification",
+			attributes: {
+				label: "Justification",
+				description: "Justify why the specified contents should be updated.",
+				placeholder: "TypeScript has updated `target` for new downleveling behavior."
+			},
+			validations: {required: true}
+		}
+	]
+}
