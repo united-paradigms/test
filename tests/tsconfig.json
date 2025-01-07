@@ -3,6 +3,7 @@
 	"exclude": [],
 	"files": null,
 	"compilerOptions": {
+		"target": "es2024",
 		"allowImportingTsExtensions": true,
 		"rewriteRelativeImportExtensions": true,
 		"module": "node16",
