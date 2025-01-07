@@ -12,7 +12,9 @@
           # Usage\n
 					Request updates for template(s) or partial(s) *contents* here.\n
 					\n
-					For *support*, create a new discussion instead. To note a bug, use that issue template instead.
+					For *support*, create a new discussion instead. To note a bug, use that issue template instead.\n
+					\n
+					# Form
 				"
 			}
 		},
