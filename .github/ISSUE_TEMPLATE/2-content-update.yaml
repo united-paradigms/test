@@ -1,6 +1,6 @@
 {
 	name: "🖊️ Content Update",
-	description: "Request the updating of template or partial contents.",
+	description: "Request updates to template or partial contents.",
 	assignees: ["ciosciaa"],
 	labels: "Feature Request",
 	
@@ -9,6 +9,7 @@
 			type: "markdown",
 			attributes: {
 				value: "
+          # Usage\n
 					Request updates for template(s) or partial(s) *contents* here.\n
 					\n
 					For *support*, create a new discussion instead. To note a bug, use that issue template instead.

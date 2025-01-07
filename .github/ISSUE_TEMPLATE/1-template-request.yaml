@@ -9,6 +9,7 @@
 			type: "markdown",
 			attributes: {
 				value: "
+					# Usage\n
 					Request a new template or partial here.\n
 					\n
 					For *support*, create a new discussion instead. To note a bug, use that issue template instead.
