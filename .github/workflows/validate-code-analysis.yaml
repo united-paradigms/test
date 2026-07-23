@@ -41,7 +41,7 @@
 					id: "setup-repository_checkout",
 					name: "🗄️ Setup: Repository Checkout",
 					
-					uses: "actions/checkout@v4.2.2"
+					uses: "actions/checkout@v7.0.1"
 				},
 				{
 					id: "codeql-prepare",
